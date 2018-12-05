@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Logo Nav - Start Bootstrap Template</title>
     
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -12,26 +16,31 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     
-    <title>Test</title>
-</head>
-<body>
+    <!-- Custom JS -->
+    <script src="/static/js/materialize.js"></script>
     
+    <!-- Django Glyphicon Logo -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+
+  </head>
+
+  <body>
+
     <nav>
-       <div class="nav-wrapper">
-         <a href="#" class="brand-logo">Logo</a>
-         <ul id="nav-mobile" class="right hide-on-med-and-down">
-           <li><a href="sass.html">Sass</a></li>
-           <li><a href="badges.html">Components</a></li>
-           <li><a href="collapsible.html">JavaScript</a></li>
-         </ul>
-       </div>
-     </nav>
-    
-    
-     {% block content %} 
-     
-     {% endblock %}
-     
-     
-</body>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+    </div>
+  </nav>
+
+   {% block content %} 
+   
+   {% endblock %}
+
+  </body>
+
 </html>
