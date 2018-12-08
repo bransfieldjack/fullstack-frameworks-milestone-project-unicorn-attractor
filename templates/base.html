@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,40 +12,60 @@
 
     <title>Unicorn Attractor</title>
     
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/static/css/custom.css">
+    <a href="https://icons8.com/icon/15785/unicorn">Unicorn icon by Icons8</a>
     
-    <!-- Custom JS -->
-    <script src="/static/js/materialize.js"></script>
-    
-    <!-- Materialize Glyphicon Logo -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
   </head>
 
   <body>
+     
+     <!-- Navigation -->
+    <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href='/'>
+          <img src="https://img.icons8.com/metro/50/000000/unicorn.png">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href={% url 'login' %}>Login
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Register</a>
+            </li
+            <li class="nav-item">
+              <a class="nav-link" href={% url 'tickets' %}>Tickets</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Cart</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-  <nav>
-    <div class="nav-wrapper">
-      <a href="/" class="brand-logo"> Unicorn Attractor! </a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="{% url 'login' %}">Login</a></li>
-        <li><a href="sass.html">Register</a></li>
-        <li><a href="badges.html">Tickets</a></li>
-        <li><a href="collapsible.html">Cart</a></li>
-      </ul>
-    </div>
-  </nav>
+   <br>
+   <br>
+   <br>
+   <br>
 
    {% block content %} 
    
    {% endblock %}
+   
+   <!-- Bootstrap core JavaScript -->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
 
   </body>
 
