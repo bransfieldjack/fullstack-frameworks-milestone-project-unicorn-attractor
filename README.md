@@ -1,6 +1,6 @@
 # Full Stack Frameworks Milestone Project - Unicorn Attractor App
 
-[!UA](https://s3-ap-southeast-2.amazonaws.com/full-stack-frameworks/ua.PNG)
+![UA](https://s3-ap-southeast-2.amazonaws.com/full-stack-frameworks/ua.PNG)
 
 The unicorn attractor is a modern startup venture.
 The business model for this app centers loosely around the idea of an online, open source community contributing capital and ideas to its development. 
