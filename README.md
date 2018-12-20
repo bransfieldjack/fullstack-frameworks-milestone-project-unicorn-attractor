@@ -4,7 +4,7 @@ One or two paragraphs providing an overview of your project.
 
 Essentially, this part is your sales pitch.
  
-![Build Status](https://travis-ci.org/bransfieldjack/fullstack-frameworks-milestone-project-unicorn-attractor.svg?branch=master)
+[![Build Status](https://travis-ci.org/bransfieldjack/fullstack-frameworks-milestone-project-unicorn-attractor.svg?branch=master)](https://travis-ci.org/bransfieldjack/fullstack-frameworks-milestone-project-unicorn-attractor)
  
 ## UX
  
