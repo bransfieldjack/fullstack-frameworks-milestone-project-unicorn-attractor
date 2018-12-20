@@ -3,11 +3,18 @@
 {% block content %}
 
 {% if messages %}
-<div>
-    {% for message in messages %}
-        {{ message }}
-    {% endfor %}
-</div>
+    <div class ="container">
+        
+        <div class="jumbotron">
+            <h1 class="display-4">Welcome to Unicorn Attractor {{ user }}!</h1>
+        </div>
+        
+        <div>
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    </div>
 {% endif %}
 
 {% endblock %}
