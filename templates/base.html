@@ -17,7 +17,8 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-    
+ 
+    <!-- Unicorn Icon --> 
     <a href="https://icons8.com/icon/15785/unicorn">Unicorn icon by Icons8</a>
     
   </head>
@@ -39,6 +40,12 @@
           <ul class="navbar-nav ml-auto">
             
             {% if user.is_authenticated %}
+               <li class="nav-item">
+                 <a class="nav-link" href={% url 'user_profile' %}>Profile</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href={% url 'logout' %}>Features</a>
+               </li>
                <li class="nav-item">
                  <a class="nav-link" href="#">Cart</a>
                </li>

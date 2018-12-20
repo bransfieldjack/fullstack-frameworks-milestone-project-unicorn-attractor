@@ -17,8 +17,10 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from accounts import urls as urls_accounts
 from tickets import urls as urls_tickets
-from accounts.views import index, login, register, logout
+from accounts.views import index, login, register, logout, user_profile
 from tickets.views import tickets
+from accounts import urls as accounts_urls
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,5 +29,6 @@ urlpatterns = [
     url(r'^accounts/login/$', login, name='login'),
     url(r'^accounts/logout/$', logout, name='logout'),
     url(r'^accounts/register/$', register, name='register'),
+    url(r'^accounts/user_profile/$', user_profile, name='user_profile'),
     url(r'^tickets/', tickets, name='tickets'),
 ]
