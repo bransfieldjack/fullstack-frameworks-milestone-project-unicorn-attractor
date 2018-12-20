@@ -21,7 +21,6 @@ def login(request):
             user = auth.authenticate(username=request.POST['username'],
                                     password=request.POST['password'])
             
-
             if user:
                 auth.login(user=user, request=request)
                 return redirect(reverse('index'))

@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['unicorn-attractor-jackalack117.c9users.io']
 
-
 # Application definition
 
 INSTALLED_APPS = [

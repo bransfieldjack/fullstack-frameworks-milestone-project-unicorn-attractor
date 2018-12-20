@@ -1,10 +1,21 @@
 # Full Stack Frameworks Milestone Project - Unicorn Attractor App
 
-One or two paragraphs providing an overview of your project.
+[!UA](https://s3-ap-southeast-2.amazonaws.com/full-stack-frameworks/ua.PNG)
 
-Essentially, this part is your sales pitch.
+The unicorn attractor is a modern startup venture.
+The business model for this app centers loosely around the idea of an online, open source community contributing capital and ideas to its development. 
+The unicorn attractor offers software development services and bug fixes for free, but a small fee from any user requesting an additional feature on the site. 
+The applications primary means of collecting user information is in the form of issue/work tickets, not too dissimilar to what you might find in a modern CRM. 
+Each ticket displays one of three different status'; assigned, in progress or completed. 
+Issues or tickets are logged to two different categories; bugs/defects in the application which will be fixed for free, and feature additions which will only be implemented for a chargeable fee. 
+
+The application facilitates the prioritisation of different tasks for the administrator, by implementing a mechanism for the user to 'up/down-vote' both bug fixes and feature additions. 
+Upvoting bug fixes does not cost any money, but the addition of a new feature to the site, which requires a certain number of upvotes to be implemented, requires a small fee to cover labour costs. 
+In return, the site administrator will pledge to spend a minimum amount of time working on the most popular voted highest-paid feature addition request. 
+
  
 [![Build Status](https://travis-ci.org/bransfieldjack/fullstack-frameworks-milestone-project-unicorn-attractor.svg?branch=master)](https://travis-ci.org/bransfieldjack/fullstack-frameworks-milestone-project-unicorn-attractor)
+
  
 ## UX
  
