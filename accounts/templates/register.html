@@ -20,7 +20,7 @@
               <form method="POST">
                 <div class="form-group">
                   {% csrf_token %}
-                  {{ registration_form.as_p | as_bootstrap }}
+                  {{ registration_form | as_bootstrap }}
                 </div>
                 <button type="submit" class="btn btn-primary">Register</button>
               </form>        

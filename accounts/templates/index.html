@@ -5,9 +5,18 @@
     <div class ="container">
         
         <div class="jumbotron">
-            <h1 class="display-4">Welcome to Unicorn Attractor {{ user }}!</h1>
+            <div class="row">
+                <h1 class="display-4">Welcome to the Unicorn Attractor,</h1>
+            </div>
+            
+            <div class="row">
+                <h1 class="display-4" style="color:#6794e0;">{{ user }}!</h1>
+            </div>
         </div>
         
+        <div class="jumbotron">
+        </div>
+            
         <div>
             {% for message in messages %}
                 {{ message }}
