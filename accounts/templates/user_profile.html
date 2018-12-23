@@ -2,13 +2,6 @@
     
 {% block content %}
 
-    <div>
-    {{ user }}'s Profile
-    </div>
-    <div>
-    {{ profile.email }}
-    </div>
-
 <div class="container">
 	<div class="row">
 		
@@ -31,39 +24,13 @@
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label for="name" class="col-4 col-form-label">First Name</label> 
-                                <div class="col-8">
-                                  <input id="name" name="name" placeholder="First Name" class="form-control here" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="lastname" class="col-4 col-form-label">Last Name</label> 
-                                <div class="col-8">
-                                  <input id="lastname" name="lastname" placeholder="Last Name" class="form-control here" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="text" class="col-4 col-form-label">Nick Name*</label> 
-                                <div class="col-8">
-                                  <input id="text" name="text" placeholder="Nick Name" class="form-control here" required="required" type="text">
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="select" class="col-4 col-form-label">Display Name public as</label> 
-                                <div class="col-8">
-                                  <select id="select" name="select" class="custom-select">
-                                    <option value="admin">Admin</option>
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="form-group row">
                                 <label for="email" class="col-4 col-form-label">Email*</label> 
                                 <div class="col-8">
                                   <input id="email" name="email" placeholder="{{ profile.email }}" class="form-control here" required="required" type="text">
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label for="website" class="col-4 col-form-label">Website</label> 
+                                <label for="website" class="col-4 col-form-label">Personal Website/Github Page</label> 
                                 <div class="col-8">
                                   <input id="website" name="website" placeholder="website" class="form-control here" type="text">
                                 </div>

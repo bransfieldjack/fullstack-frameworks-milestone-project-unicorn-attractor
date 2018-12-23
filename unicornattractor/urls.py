@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from tickets import urls as urls_tickets
 from accounts.views import index, login, register, logout, user_profile
-from tickets.views import tickets
+from tickets.views import tickets, bugs, features, add_bug, add_feature
 from accounts import urls as accounts_urls
 
 
@@ -30,4 +30,8 @@ urlpatterns = [
     url(r'^accounts/register/$', register, name='register'),
     url(r'^accounts/user_profile/$', user_profile, name='user_profile'),
     url(r'^tickets/', tickets, name='tickets'),
+    url(r'^bugs/', bugs, name='bugs'),
+    url(r'^features/', features, name='features'),
+    url(r'^add_bug/', add_bug, name='add_bug'),
+    url(r'^add_feature/', add_feature, name='add_feature'),
 ]
