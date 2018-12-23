@@ -8,39 +8,20 @@
     <h1>Bugs: </h1>
 
     <div class="row">
-       
-            <div class="col-sm-10">
-            
-              <div class="card" style="width: 70rem;">
-                
-                  <a href="#">
-                    <div class="card-body">
-                      <h5 class="card-title">Issue: </h5>
-                    </div>
-                  </a>
-  
-                  <a href="#">
-                    <div class="card-body">
-                      <h5 class="card-title">Issue: </h5>
-                    </div>
-                  </a>
-
-                  <a href="#">
-                    <div class="card-body">
-                      <h5 class="card-title">Issue: </h5>
-                    </div>
-                  </a>
-                  
-                  <a href="#">
-                    <div class="card-body">
-                      <h5 class="card-title">Issue: </h5>
-                    </div>
-                  </a>
-                  
+      {%for bug in bugs %}
+        <div class="col-sm-10">
+          <div class="card" style="width: 70rem;">
+            <a href="#">
+              <div class="card-body">
+                <h5 class="card-title">Issue: </h5>
+                  <div class="row row-flex">
+                    {{ bug }}
+                  </div>
               </div>
-              
-            </div>
-    
+            </a>
+          </div>
+        </div>
+      {% endfor %}
     </div>
     
 </div>

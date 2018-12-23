@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
+from .models import Bugs, Features
 
 
 def tickets(request):
@@ -6,11 +7,15 @@ def tickets(request):
     
     
 def bugs(request):
-    return render(request, 'bugs.html')
+    bugs = Bugs.objects.all()
+    
+    return render(request, 'bugs.html', {'bugs': bugs})
     
     
 def features(request):
-    return render(request, 'features.html')
+    features = Features.objects.all()
+    
+    return render(request, 'features.html', {'features': features})
     
     
 def add_bug(request):
