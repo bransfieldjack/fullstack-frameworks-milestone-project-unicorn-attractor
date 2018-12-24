@@ -17,13 +17,13 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from tickets import urls as urls_tickets
 from accounts.views import index, login, register, logout, user_profile
-from tickets.views import tickets, bugs, features, add_bug, add_feature
+from tickets.views import tickets, bugs, features, add_bug, add_feature, bug_detail, features_detail
 from accounts import urls as accounts_urls
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', index, name='index'),
+    url(r'^$', index, name='index'),    # If there is no name after slash, display index. 
     url(r'^accounts/', include(accounts_urls)),
     url(r'^accounts/login/$', login, name='login'),
     url(r'^accounts/logout/$', logout, name='logout'),
@@ -34,4 +34,6 @@ urlpatterns = [
     url(r'^features/', features, name='features'),
     url(r'^add_bug/', add_bug, name='add_bug'),
     url(r'^add_feature/', add_feature, name='add_feature'),
+    url(r'(?P<pk>\d+)/$', bug_detail, name='bug_detail'),
+    url(r'(?P<pk>\d+)/features_detail/$', features_detail, name='features_detail'),
 ]
