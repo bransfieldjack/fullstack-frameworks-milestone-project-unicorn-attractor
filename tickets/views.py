@@ -33,11 +33,12 @@ def features_detail(request, pk):
     
     
 def add_bug(request, pk=None):
-    bug = get_object_or_404(Bugs, pk=pk) if pk else None
-    form = AddBugsForm(request.POST, instance=bug)
-    if form.is_valid():
-        bugs = form.save()
-        return redirect(bugs, bug.pk)
+    bug = get_object_or_404(Bugs, pk=pk) if pk else None    # Instantiate the 'Bugs' object from models. 
+    if request.method=="POST":
+        form = AddBugsForm(request.POST, instance=bug)  # If POST request received from form, and form is valid, save the form data and redirect back to the detail page with the id of the object. 
+        if form.is_valid():
+            bug = form.save()
+            return redirect(bug_detail, bug.pk)
     else:
         form = AddBugsForm(instance= bug)
     return render(request, 'add_bug.html', {'form': form})
@@ -45,10 +46,11 @@ def add_bug(request, pk=None):
     
 def add_feature(request, pk=None):
     feature = get_object_or_404(Features, pk=pk) if pk else None
-    form = AddFeaturesForm(request.POST, instance=feature)
-    if form.is_valid():
-        feature = form.save()
-        return redirect(features, feature.pk)
+    if request.method=="POST":
+        form = AddFeaturesForm(request.POST, instance=feature)
+        if form.is_valid():
+            feature = form.save()
+            return redirect(features_detail, feature.pk)
     else:
         form = AddFeaturesForm(instance=feature)
-    return render(request, 'add_feature.html')
+    return render(request, 'add_feature.html', {'form': form})

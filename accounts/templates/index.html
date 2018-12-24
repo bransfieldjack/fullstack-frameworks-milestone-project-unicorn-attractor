@@ -15,13 +15,11 @@
         </div>
         
         <div class="jumbotron">
+            <div class="row">
+                <span>Click on the Unicorn  <a href={% url 'tickets' %}> icon </a>  to add tickets and feature requests. </span>
+            </div>
         </div>
-            
-        <div>
-            {% for message in messages %}
-                {{ message }}
-            {% endfor %}
-        </div>
+        
     </div>
 
 {% endblock %}

@@ -15,6 +15,7 @@
             <a href={% url 'bug_detail' bug.id %}>
               <div class="card-body">
                 <h5 class="card-title">{{ bug.title }}</h5>
+                <p>Views: {{ bug.views }}</p>
               </div>
             </a>
           </div>

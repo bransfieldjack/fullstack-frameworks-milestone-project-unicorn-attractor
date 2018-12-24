@@ -14,6 +14,7 @@
             <a href={% url 'features_detail' feature.id %}>
               <div class="card-body">
                 <h5 class="card-title">{{ feature.title }}</h5>
+                <p>Views: {{ feature.views }}</p>
               </div>
             </a>
           </div>

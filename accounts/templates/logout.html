@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+    
+{% load bootstrap_tags %}
+    
+{% block content %}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Until next time! </h1>
+        <div>
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}
