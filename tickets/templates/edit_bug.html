@@ -4,10 +4,10 @@
 
 {% block content %}
     <div class="container">
-        <h1>Log a feature request: </h1>
+        <h1>Report a bug: </h1>
         <br>
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}    
+        <form method="POST" enctypr="multipart/form-data">
+            {% csrf_token %}
             {{ form | as_bootstrap }}
             <button type="submit" class="btn btn-primary">POST</button>
         </form>

@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
+from accounts.models import Profile
 
 
 class UserLoginForm(forms.Form):    # User login form.
@@ -38,3 +39,10 @@ class UserRegistrationForm(UserCreationForm):   # User registration form.
             raise ValidationError("Passwords must match!")
             
         return password2
+        
+        
+class UserProfileForm(forms.ModelForm):
+    
+    class Meta:
+        model = Profile
+        fields = ('username', 'email', 'website', 'publicinfo')

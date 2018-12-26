@@ -6,6 +6,10 @@
 <div class="container">
     <h1>{{ bugs.title }}</h1>
     <p>{{ bugs.description }}</p>
+    <a class="nav-link" href={% url 'edit_bug' bugs.id %}><button type="button" class="btn btn-secondary btn-lg">Edit</button></a>
 </div>
+
+
+
 {% endblock %}
 

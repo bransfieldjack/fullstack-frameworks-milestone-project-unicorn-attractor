@@ -6,5 +6,8 @@ class Item(models.Model):
     done = models.BooleanField(blank=False, default=False)
     
     
-    def __str__(self):
-        return self.name
+class Profile(models.Model):
+    username = models.CharField(max_length=30)
+    email = models.CharField(max_length=50)
+    website = models.CharField(max_length=50, blank=True)
+    publicinfo = models.TextField(blank=True)
