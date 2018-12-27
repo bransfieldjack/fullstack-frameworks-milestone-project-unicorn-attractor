@@ -63,7 +63,6 @@ def register(request):
     
     
 def user_profile(request):
-    
     form = UserProfileForm(request.POST)
     return render(request, 'user_profile.html', {'form': form})
     

@@ -4,8 +4,42 @@
     
 {% block content %}
 <div class="container">
-    <h1>{{ features.title }}</h1>
-    <p>{{ features.description }}</p>
-    <a class="nav-link" href={% url 'edit_feature' features.id %}><button type="button" class="btn btn-secondary btn-lg">Edit</button></a>
+
+<div class="row">
+  
+    <div class="col">
+    </div>
+    
+    <div class="col-9">
+      
+        <a class="nav-link" href={% url 'edit_feature' features.id %}><h2>Feature: {{ features.title }}</h2>
+        {% if user.is_authenticated %}
+            <p>{{ features.description }}</p></a>
+        {% endif %}
+        <h2>Comments: </h2>
+        <hr>
+            <p>{{ features.comments }}</p>
+        <hr>
+
+          <form method="POST" enctypr="multipart/form-data">
+            {% csrf_token %}
+            {{ comment_form | as_bootstrap }}
+            <button type="submit" class="btn btn-primary">POST</button>
+          </form>
+          
+    </div>
+    
+    <div class="col">
+    </div>
+    
+  </div>
+
+
+
+
+
+
+          
+          
 </div>
 {% endblock %}

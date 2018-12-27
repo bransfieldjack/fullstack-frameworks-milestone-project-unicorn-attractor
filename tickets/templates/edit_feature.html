@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="container">
-        <h1>Report a bug: </h1>
+        <h1>Edit '{{ feature.title }}' bug report: </h1>
         <br>
         <form method="POST" enctypr="multipart/form-data">
             {% csrf_token %}

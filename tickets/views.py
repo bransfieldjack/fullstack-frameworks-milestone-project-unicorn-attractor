@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from .models import Bugs, Features
 from django.utils import timezone
-from .forms import AddBugsForm, AddFeaturesForm
+from .forms import AddBugsForm, AddFeaturesForm, AddCommentForm
 
 
 def tickets(request):   # Render the ticket main page. 
@@ -37,10 +37,21 @@ def edit_bug(request, pk=None):
     
     
 def bug_detail(request, pk):
+    
     bugs = get_object_or_404(Bugs, pk=pk)   # Returns the bug based on its ID. 
     bugs.views += 1 # Increments the number of views by 1.
     bugs.save()
-    return render(request, 'bug_detail.html', {'bugs': bugs})
+    
+    if request.method=="POST":
+        comment_form = AddCommentForm(request.POST, instance=bugs)
+        if comment_form.is_valid():
+            bugs = comment_form.save()
+            return redirect(bug_detail, bugs.pk)
+    
+    else:
+        comment_form = AddCommentForm(instance=bugs)     
+    
+    return render(request, 'bug_detail.html', {'bugs': bugs, 'comment_form': comment_form})
     
 
 def features(request):  # Render the features ticket page. 
@@ -53,30 +64,36 @@ def add_feature(request):
         form = AddFeaturesForm(request.POST)  # If POST request received from form, and form is valid, save the form data and redirect back to the detail page with the id of the object. 
         if form.is_valid():
             feature = form.save()
-            return redirect(bugs)
+            return redirect(features)
     else:
         form = AddFeaturesForm
     return render(request, 'add_feature.html', {'form': form})
     
     
 def features_detail(request, pk):
-    features = get_object_or_404(Features, pk=pk)   
+    
+    features = get_object_or_404(Features, pk=pk) 
     features.views += 1 
     features.save()
-    return render(request, 'features_detail.html', {'features': features})
+    
+    if request.method=="POST":
+        comment_form = AddCommentForm(request.POST, instance=features)
+        if comment_form.is_valid():
+            features = comment_form.save()
+            return redirect(features_detail, features.pk)
+    else:
+        comment_form = AddCommentForm(instance=features)       
+        
+    return render(request, 'features_detail.html', {'features': features, 'comment_form': comment_form})
     
     
-def edit_feature(request, pk=None):
-    feature = get_object_or_404(Features, pk=pk) if pk else None    # Instantiate the 'Bugs' object from models, gets the object or returns a 404 error.
+def edit_feature(request, pk):
+    feature = get_object_or_404(Features, pk=pk)  # Instantiate the 'Bugs' object from models, gets the object or returns a 404 error.
     if request.method=="POST":
         form = AddFeaturesForm(request.POST, instance=feature)  # If POST request received from form, and form is valid, save the form data and redirect back to the detail page with the id of the object. 
         if form.is_valid():
             feature = form.save()
             return redirect(features_detail, feature.pk)
     else:
-        form = AddFeaturesForm(instance= feature)
-    return render(request, 'edit_feature.html', {'form': form})
-        
-    
-
-    
+        form = AddFeaturesForm(instance=feature)
+    return render(request, 'edit_feature.html', {'form': form, 'feature': feature})

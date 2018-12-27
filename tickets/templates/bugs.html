@@ -14,8 +14,11 @@
           <div class="card" style="width: 70rem;">
             <a href={% url 'bug_detail' bug.id %}>
               <div class="card-body">
-                <h5 class="card-title">{{ bug.title }}</h5>
+                <img src="https://img.icons8.com/windows/32/000000/bug.png">
+                <h2 class="card-title">{{ bug.title }}</h2>
                 <p>Views: {{ bug.views }}</p>
+                <p>Created by: {{ bug.reported_by }}</p>
+                <p>Creation date: {{ bug.created_date }}</p>
               </div>
             </a>
           </div>

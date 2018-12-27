@@ -4,12 +4,20 @@
 
 {% block content %}
     <div class="container">
-        <h1>Report a bug: </h1>
+        <h1>Edit a bug: </h1>
         <br>
         <form method="POST" enctypr="multipart/form-data">
             {% csrf_token %}
             {{ form | as_bootstrap }}
             <button type="submit" class="btn btn-primary">POST</button>
         </form>
+        
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1"></label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <button type="submit" class="btn btn-primary">Comment</button>
+        </div>
+        
     </div>
 {% endblock %}
+
