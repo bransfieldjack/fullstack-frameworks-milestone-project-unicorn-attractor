@@ -12,15 +12,19 @@
     
     <div class="col-9">
       
-        <a class="nav-link" href={% url 'edit_feature' bugs.id %}><h2>Bug: {{ bugs.title }}</h2>
+        <a class="nav-link" href={% url 'edit_bug' bugs.id %}><h2>Bug: {{ bugs.title }}</h2>
         {% if user.is_authenticated %}
             <p>{{ bugs.description }}</p></a>
         {% endif %}
+        <br>
+        <br>
         <h2>Comments: </h2>
         <hr>
-            <p>{{ bugs.comments }}</p>
+            <p>Comment: {{ bugs.comments }}</p>
+            <p>User: {{ bugs.user }}</p>
         <hr>
-
+       
+        
           <form method="POST" enctypr="multipart/form-data">
             {% csrf_token %}
             {{ comment_form | as_bootstrap }}

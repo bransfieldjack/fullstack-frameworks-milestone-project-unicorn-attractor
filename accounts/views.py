@@ -63,7 +63,17 @@ def register(request):
     
     
 def user_profile(request):
-    form = UserProfileForm(request.POST)
-    return render(request, 'user_profile.html', {'form': form})
+    
+    if request.method=="POST":
+        form = UserProfileForm(request.POST)
+        if form.is_valid():
+            form = form.save()
+            return redirect(user_profile)
+    else:
+        form = UserProfileForm
+        
+        profile = Profile.objects.get()
+        
+    return render(request, 'user_profile.html', {'form': form, 'profile': profile})
     
     

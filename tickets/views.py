@@ -75,11 +75,12 @@ def features_detail(request, pk):
     features = get_object_or_404(Features, pk=pk) 
     features.views += 1 
     features.save()
-    
+
     if request.method=="POST":
         comment_form = AddCommentForm(request.POST, instance=features)
         if comment_form.is_valid():
             features = comment_form.save()
+            comment_form = AddCommentForm()     
             return redirect(features_detail, features.pk)
     else:
         comment_form = AddCommentForm(instance=features)       

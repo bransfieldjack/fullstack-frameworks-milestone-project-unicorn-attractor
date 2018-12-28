@@ -18,3 +18,4 @@ class AddCommentForm(forms.ModelForm):
     class Meta:
         model = Features
         fields = ('user', 'comments')
+        
