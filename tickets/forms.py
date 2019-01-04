@@ -1,5 +1,5 @@
 from django import forms
-from .models import Bugs, Features
+from .models import Bugs, Features, Comments
 
 
 class AddBugsForm(forms.ModelForm):
@@ -11,11 +11,17 @@ class AddBugsForm(forms.ModelForm):
 class AddFeaturesForm(forms.ModelForm):
     class Meta:
         model = Features
-        fields = ('title', 'requested_by', 'description')
+        fields = ('title', 'description')
 
 
 class AddCommentForm(forms.ModelForm):
     class Meta:
-        model = Features
-        fields = ('user', 'comments')
+        model = Comments
+        fields = ('message', )
+        widgets = {
+            'feature': forms.HiddenInput(),
+        }
+  
+        
+        
         

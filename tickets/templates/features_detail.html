@@ -12,22 +12,25 @@
     
     <div class="col-9">
       
-        <h2>Feature: <a class="nav-link" href={% url 'edit_feature' features.id %}>{{ features.title }}</a></h2>
+        <h2>Feature: <a class="nav-link" href={% url 'edit_feature' feature.id %}>{{ feature.title }}</a></h2>
         {% if user.is_authenticated %}
-            <p>{{ features.description }}</p>
+            <p>{{ feature.description }}</p>
         {% endif %}
         <br>
         <br>
         <h2>Comments: </h2>
-        <hr>
-            <p>Comment: {{ features.comments }}</p>
-            <p>User: {{ features.user }}</p>
-        <hr>
-       
+            <ul>
+                {% for item in Comment %}
+                    <i>{{ item }}</i>
+                {% endfor %}
+            </ul>
+            
+            <br>
+            <hr>
         
           <form method="POST">
             {% csrf_token %}
-            {{ comment_form | as_bootstrap }}
+            {{ form | as_bootstrap }}
             <button type="submit" class="btn btn-primary">POST</button>
           </form>
           

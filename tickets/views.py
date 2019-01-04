@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
-from .models import Bugs, Features
+from .models import Bugs, Features, Comments
 from django.utils import timezone
 from .forms import AddBugsForm, AddFeaturesForm, AddCommentForm
 
@@ -56,7 +56,10 @@ def bug_detail(request, pk):
 
 def features(request):  # Render the features ticket page. 
     features = Features.objects.all()
-    return render(request, 'features.html', {'features': features})
+    likes = Features.objects.all()
+    user = request.user
+        
+    return render(request, 'features.html', {'features': features, 'likes': likes, 'user': user})
     
     
 def add_feature(request):
@@ -72,20 +75,27 @@ def add_feature(request):
     
 def features_detail(request, pk):
     
-    features = get_object_or_404(Features, pk=pk) 
-    features.views += 1 
-    features.save()
+    feature = get_object_or_404(Features, pk=pk) 
+    feature.views += 1
+    feature.save()
 
+    user = request.user
+
+    Comment = Comments.objects.filter(feature=feature)
+ 
     if request.method=="POST":
-        comment_form = AddCommentForm(request.POST, instance=features)
-        if comment_form.is_valid():
-            features = comment_form.save()
-            comment_form = AddCommentForm()     
-            return redirect(features_detail, features.pk)
+        form = AddCommentForm(request.POST)
+        if form.is_valid:
+            Comment = feature.id
+            Comment.save()
+            form.save()
+            return redirect(features_detail, feature.pk)
     else:
-        comment_form = AddCommentForm(instance=features)       
+        form = AddCommentForm()   
         
-    return render(request, 'features_detail.html', {'features': features, 'comment_form': comment_form})
+    contexts = {'feature': feature, 'form': form, 'Comment': Comment }
+    
+    return render(request, 'features_detail.html', contexts)
     
     
 def edit_feature(request, pk):
@@ -98,3 +108,5 @@ def edit_feature(request, pk):
     else:
         form = AddFeaturesForm(instance=feature)
     return render(request, 'edit_feature.html', {'form': form, 'feature': feature})
+    
+ 
