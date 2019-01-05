@@ -20,17 +20,18 @@
         <br>
         <h2>Comments: </h2>
             <ul>
-                {% for item in Comment %}
-                    <i>{{ item }}</i>
+                {% for comment in comments %}
+                    <i>{{ comment }}</i>
                 {% endfor %}
             </ul>
             
             <br>
             <hr>
         
-          <form method="POST">
+          <form method="POST", action={% url 'features_detail' feature.id %}>
             {% csrf_token %}
             {{ form | as_bootstrap }}
+            <input id="feature_id" name="feature_id" type="hidden" value="{{ feature.id }}">
             <button type="submit" class="btn btn-primary">POST</button>
           </form>
           

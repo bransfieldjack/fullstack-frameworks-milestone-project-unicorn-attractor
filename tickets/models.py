@@ -29,7 +29,7 @@ class Features(models.Model):
         
         
 class Comments(models.Model):
-    feature = models.ForeignKey(Features, null=True)
+    feature = models.ForeignKey(Features)
     message = models.CharField(max_length=50, default='')
     
     

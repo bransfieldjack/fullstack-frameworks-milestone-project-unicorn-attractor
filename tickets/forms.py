@@ -18,10 +18,7 @@ class AddCommentForm(forms.ModelForm):
     class Meta:
         model = Comments
         fields = ('message', )
-        widgets = {
-            'feature': forms.HiddenInput(),
-        }
-  
+        
         
         
         

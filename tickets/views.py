@@ -80,20 +80,24 @@ def features_detail(request, pk):
     feature.save()
 
     user = request.user
+    
+    comments = Comments.objects.filter(feature=feature)
 
-    Comment = Comments.objects.filter(feature=feature)
- 
     if request.method=="POST":
+        
         form = AddCommentForm(request.POST)
+        
+        feature_id = request.POST['feature_id']
+        
+        
         if form.is_valid:
-            Comment = feature.id
-            Comment.save()
-            form.save()
+            save = Comments(feature_id = feature_id, message = form.save()) # Save the feature ID from the front end and the contents of the form to the message field & feature field in the database. 
+            save.save()
             return redirect(features_detail, feature.pk)
     else:
         form = AddCommentForm()   
         
-    contexts = {'feature': feature, 'form': form, 'Comment': Comment }
+    contexts = {'feature': feature, 'form': form, 'comments': comments }
     
     return render(request, 'features_detail.html', contexts)
     
