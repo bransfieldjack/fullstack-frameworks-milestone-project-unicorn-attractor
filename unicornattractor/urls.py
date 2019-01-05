@@ -1,23 +1,8 @@
-"""unicornattractor URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/1.11/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.conf.urls import url, include
-    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
-"""
 from django.conf.urls import url, include
 from django.contrib import admin
 from tickets import urls as urls_tickets
 from accounts.views import index, login, register, logout, user_profile
-from tickets.views import tickets, bugs, features, edit_bug, edit_feature, add_feature, add_bug, bug_detail, features_detail
+from tickets.views import tickets, bugs, features, edit_bug, edit_feature, add_feature, add_bug, bug_detail, features_detail, bug_upvote, bug_downvote, feature_upvote, feature_downvote
 from accounts import urls as accounts_urls
 
 
@@ -38,4 +23,8 @@ urlpatterns = [
     url(r'(?P<pk>\d+)/edit_feature/$', edit_feature, name='edit_feature'),
     url(r'(?P<pk>\d+)/bug_detail/$', bug_detail, name='bug_detail'),
     url(r'(?P<pk>\d+)/features_detail/$', features_detail, name='features_detail'),
+    url(r'(?P<pk>\d+)/bug_upvote/$', bug_upvote, name='bug_upvote'),
+    url(r'(?P<pk>\d+)/bug_downvote/$', bug_downvote, name='bug_downvote'),
+    url(r'(?P<pk>\d+)/feature_upvote/$', feature_upvote, name='feature_upvote'),
+    url(r'(?P<pk>\d+)/feature_downvote/$', feature_downvote, name='feature_downvote'),
 ]

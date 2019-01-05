@@ -18,9 +18,10 @@
                 <h2 class="card-title">{{ feature.title }}</h2>
                 <p>Views: {{ feature.views }}</p>
                 <p>Creation date: {{ feature.created_date }}</p>
+                <p>Likes: {{ feature.likes }}</p>
                 </a>
-                <a href=""><button type="button" class="btn"><img src="https://img.icons8.com/ios/50/000000/checkmark.png"></button></a>
-                <button type="button" class="btn"><img src="https://img.icons8.com/ios/50/000000/delete-sign.png"></button>  
+                <a href={% url 'feature_upvote' feature.id %}><button type="button" class="btn"><img src="https://img.icons8.com/ios/50/000000/checkmark.png"></button></a>
+                <a href={% url 'feature_downvote' feature.id %}><button type="button" class="btn"><img src="https://img.icons8.com/ios/50/000000/delete-sign.png"></button></a>  
 
               </div>
           </div>

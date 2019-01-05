@@ -20,14 +20,20 @@
         <br>
         <h2>Comments: </h2>
             <ul>
+                <hr>
                 {% for comment in comments %}
-                    <i>{{ comment }}</i>
+                    <h4 style="color: #91ffc4">{{ comment.user }}</h4>
+                    <p>{{ comment.message }}</p>
+                    <hr>
+                    <br>
                 {% endfor %}
             </ul>
             
             <br>
             <hr>
         
+          <h3>Leave A Comment: </h3>
+          <br>
           <form method="POST", action={% url 'features_detail' feature.id %}>
             {% csrf_token %}
             {{ form | as_bootstrap }}

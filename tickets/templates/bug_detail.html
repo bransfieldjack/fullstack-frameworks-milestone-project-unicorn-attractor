@@ -12,22 +12,32 @@
     
     <div class="col-9">
       
-        <a class="nav-link" href={% url 'edit_bug' bugs.id %}><h2>Bug: {{ bugs.title }}</h2>
+        <a class="nav-link" href={% url 'edit_bug' bug.id %}><h2>Bug: {{ bug.title }}</h2>
         {% if user.is_authenticated %}
-            <p>{{ bugs.description }}</p></a>
+            <p>{{ bug.description }}</p></a>
         {% endif %}
         <br>
         <br>
         <h2>Comments: </h2>
-        <hr>
-            <p>Comment: {{ bugs.comments }}</p>
-            <p>User: {{ bugs.user }}</p>
-        <hr>
-       
+            <ul>
+                <hr>
+                {% for comment in comments %}
+                    <h4 style="color: #91ffc4">{{ comment.user }}</h4>
+                    <p>{{ comment.message }}</p>
+                    <hr>
+                    <br>
+                {% endfor %}
+            </ul>
+            
+            <br>
+            <hr>
         
-          <form method="POST" enctypr="multipart/form-data">
+          <h3>Leave A Comment: </h3>
+          <br>
+          <form method="POST" action={% url 'bug_detail' bug.id %}>
             {% csrf_token %}
-            {{ comment_form | as_bootstrap }}
+            {{ form | as_bootstrap }}
+            <input id="bug_id" name="bug_id" type="hidden" value="{{ bug.id }}">
             <button type="submit" class="btn btn-primary">POST</button>
           </form>
           

@@ -22,7 +22,35 @@ def add_bug(request):
     else:
         form = AddBugsForm
     return render(request, 'add_bug.html', {'form': form})
+    
+    
+def bug_detail(request, pk):
+    
+    bug = get_object_or_404(Bugs, pk=pk)   # Returns the bug based on its ID. 
+    bug.views += 1 # Increments the number of views by 1.
+    bug.save()
+    
+    user = request.user
+    
+    comments = Comments.objects.filter(bug=bug)
+    
+    if request.method=="POST":
         
+        form = AddCommentForm(request.POST)
+        bug_id = request.POST['bug_id']
+        
+        if form.is_valid:
+            save = Comments(bug_id = bug_id, message = form.save(), user = user) # Save the feature ID from the front end and the contents of the form to the message field & feature field in the database.
+            save.save()
+            return redirect(bug_detail, bug.pk)
+    
+    else:
+        form = AddCommentForm(instance=bug)   
+        
+    contexts = {'bug': bug, 'form': form, 'comments': comments }
+    
+    return render(request, 'bug_detail.html', contexts)
+    
     
 def edit_bug(request, pk=None):
     bug = get_object_or_404(Bugs, pk=pk) if pk else None    # Instantiate the 'Bugs' object from models, gets the object or returns a 404 error.
@@ -36,22 +64,22 @@ def edit_bug(request, pk=None):
     return render(request, 'edit_bug.html', {'form': form})
     
     
-def bug_detail(request, pk):
+def bug_upvote(request, pk):
     
-    bugs = get_object_or_404(Bugs, pk=pk)   # Returns the bug based on its ID. 
-    bugs.views += 1 # Increments the number of views by 1.
-    bugs.save()
+    bug = get_object_or_404(Bugs, pk=pk)
+    bug.likes += 1
+    bug.save()
     
-    if request.method=="POST":
-        comment_form = AddCommentForm(request.POST, instance=bugs)
-        if comment_form.is_valid():
-            bugs = comment_form.save()
-            return redirect(bug_detail, bugs.pk)
+    return redirect(bugs)
     
-    else:
-        comment_form = AddCommentForm(instance=bugs)     
     
-    return render(request, 'bug_detail.html', {'bugs': bugs, 'comment_form': comment_form})
+def bug_downvote(request, pk):
+    
+    bug = get_object_or_404(Bugs, pk=pk)
+    bug.likes -= 1
+    bug.save()
+    
+    return redirect(bugs)
     
 
 def features(request):  # Render the features ticket page. 
@@ -86,12 +114,10 @@ def features_detail(request, pk):
     if request.method=="POST":
         
         form = AddCommentForm(request.POST)
-        
         feature_id = request.POST['feature_id']
-        
-        
+
         if form.is_valid:
-            save = Comments(feature_id = feature_id, message = form.save()) # Save the feature ID from the front end and the contents of the form to the message field & feature field in the database. 
+            save = Comments(feature_id = feature_id, message = form.save(), user = user) # Save the feature ID from the front end and the contents of the form to the message field & feature field in the database. 
             save.save()
             return redirect(features_detail, feature.pk)
     else:
@@ -114,3 +140,19 @@ def edit_feature(request, pk):
     return render(request, 'edit_feature.html', {'form': form, 'feature': feature})
     
  
+def feature_upvote(request, pk):
+    
+    feature = get_object_or_404(Features, pk=pk)
+    feature.likes += 1
+    feature.save()
+    
+    return redirect(features)
+    
+    
+def feature_downvote(request, pk):
+    
+    feature = get_object_or_404(Features, pk=pk)
+    feature.likes -= 1
+    feature.save()
+    
+    return redirect(features)

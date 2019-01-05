@@ -5,7 +5,7 @@ from .models import Bugs, Features, Comments
 class AddBugsForm(forms.ModelForm):
     class Meta:
         model = Bugs
-        fields = ('title', 'reported_by', 'description')
+        fields = ('title', 'description')
         
         
 class AddFeaturesForm(forms.ModelForm):
