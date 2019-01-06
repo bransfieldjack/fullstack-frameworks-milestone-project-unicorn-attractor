@@ -5,10 +5,15 @@
 {% block content %}
 
 <div class="container">
+  <div class="row">
+    <div class="col-sm">
+     
+    </div>
     
-    <h1>Bugs: </h1>
-
-    <div class="row">
+    
+    <div class="col-sm">
+      <h1>Bugs: </h1>
+    
       {%for bug in bugs %}
         <div class="col-sm-10">
           <div class="card" style="width: 70rem;">
@@ -21,14 +26,18 @@
                 <p>Creation date: {{ bug.created_date }}</p>
                 <p>Likes: {{ bug.likes }}</p>
                 </a>
-                <a href={% url 'bug_upvote' bug.id %}><button type="button" class="btn"><img src="https://img.icons8.com/ios/50/000000/checkmark.png"></button></a>
-                <a href={% url 'bug_downvote' bug.id %}><button type="button" class="btn"><img src="https://img.icons8.com/ios/50/000000/delete-sign.png"></button></a>  
+                <a href={% url 'bug_upvote' bug.id %}><img src="https://img.icons8.com/ios-glyphs/30/000000/thumb-up.png"></a>
               </div>
           </div>
         </div>
       {% endfor %}
     </div>
     
+    
+    <div class="col-sm">
+      
+    </div>
+  </div>
 </div>
 
 {% endblock %}
