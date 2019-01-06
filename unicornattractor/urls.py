@@ -4,6 +4,7 @@ from tickets import urls as urls_tickets
 from accounts.views import index, login, register, logout, user_profile
 from tickets.views import tickets, bugs, features, edit_bug, edit_feature, add_feature, add_bug, bug_detail, features_detail, bug_upvote, bug_downvote, feature_upvote, feature_downvote
 from accounts import urls as accounts_urls
+from checkout.views import cart
 
 
 urlpatterns = [
@@ -27,4 +28,5 @@ urlpatterns = [
     url(r'(?P<pk>\d+)/bug_downvote/$', bug_downvote, name='bug_downvote'),
     url(r'(?P<pk>\d+)/feature_upvote/$', feature_upvote, name='feature_upvote'),
     url(r'(?P<pk>\d+)/feature_downvote/$', feature_downvote, name='feature_downvote'),
+    url(r'^cart/$', cart, name='cart'),
 ]

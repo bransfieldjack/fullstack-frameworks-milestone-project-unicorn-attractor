@@ -11,6 +11,9 @@
     </div>
     
     <div class="col-9">
+        
+        <button type="button" class="btn btn-success">Vote Yes </button>
+        <button type="button" class="btn btn-danger">Vote No </button>
       
         <a class="nav-link" href={% url 'edit_bug' bug.id %}><h2>Bug: {{ bug.title }}</h2>
         {% if user.is_authenticated %}

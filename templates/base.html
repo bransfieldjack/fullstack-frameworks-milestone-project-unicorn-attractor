@@ -53,7 +53,7 @@
                  <a class="nav-link" href={% url 'features' %}><img src="https://img.icons8.com/windows/32/000000/support.png">Features</a>
                </li>
                <li class="nav-item">
-                 <a class="nav-link" href="#"><img src="https://img.icons8.com/windows/32/000000/shopping-cart.png">Cart</a>
+                 <a class="nav-link" href={% url 'cart' %}><img src="https://img.icons8.com/windows/32/000000/shopping-cart.png">Cart</a>
                </li>
                <li class="nav-item">
                  <a class="nav-link" href={% url 'user_profile' %}><img src="https://img.icons8.com/windows/32/000000/gender-neutral-user.png">Profile</a>
@@ -85,8 +85,17 @@
    
    {% endblock %}
    
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   
    <!-- Footer -->
-<footer class="page-footer font-small blue pt-4">
+<footer class="page-footer font-small blue pt-4" style=" position: relative; left: 0; bottom: 0; height: 100px; width: 100%; ">
 
     <!-- Footer Links -->
     <div class="container-fluid text-center text-md-left">
@@ -100,7 +109,6 @@
           <!-- Content -->
           <h3 class="text-muted">Unicorn Attractor</h3>
           <img src="https://img.icons8.com/metro/50/000000/unicorn.png">   
-          <p>Here you can use rows and columns here to organize your footer content.</p>
         </div>
         <!-- Grid column -->
 
@@ -110,20 +118,20 @@
         <div class="col-md-3 mb-md-0 mb-3">
 
             <!-- Links -->
-            <h5 class="text-uppercase">Links</h5>
+            <h5 class="text-uppercase">Service Offerings:</h5>
 
             <ul class="list-unstyled">
               <li>
-                <a href="#!">Link 1</a>
+                <a href="#!">Online Community</a>
               </li>
               <li>
-                <a href="#!">Link 2</a>
+                <a href="#!">Issue Tracking</a>
               </li>
               <li>
-                <a href="#!">Link 3</a>
+                <a href="#!">Bug Fixes</a>
               </li>
               <li>
-                <a href="#!">Link 4</a>
+                <a href="#!">Feature Addition</a>
               </li>
             </ul>
 

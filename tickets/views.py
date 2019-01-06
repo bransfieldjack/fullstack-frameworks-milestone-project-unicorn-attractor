@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from .models import Bugs, Features, Comments
 from django.utils import timezone
 from .forms import AddBugsForm, AddFeaturesForm, AddCommentForm
+from checkout.views import cart
 
 
 def tickets(request):   # Render the ticket main page. 
@@ -147,7 +148,7 @@ def feature_upvote(request, pk):
     feature.save()
     
     return redirect(features)
-    
+ 
     
 def feature_downvote(request, pk):
     

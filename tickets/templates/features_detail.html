@@ -12,6 +12,9 @@
     
     <div class="col-9">
       
+        <a href={% url 'cart' %}><button type="button" class="btn btn-success">Vote Yes </button></a>
+        <button type="button" class="btn btn-danger">Vote No </button>
+      
         <h2>Feature: <a class="nav-link" href={% url 'edit_feature' feature.id %}>{{ feature.title }}</a></h2>
         {% if user.is_authenticated %}
             <p>{{ feature.description }}</p>
