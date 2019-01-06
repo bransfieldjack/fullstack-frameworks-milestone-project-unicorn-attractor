@@ -53,7 +53,9 @@
                  <a class="nav-link" href={% url 'features' %}><img src="https://img.icons8.com/windows/32/000000/support.png">Features</a>
                </li>
                <li class="nav-item">
-                 <a class="nav-link" href={% url 'view_cart' %}><img src="https://img.icons8.com/windows/32/000000/shopping-cart.png">Cart</a>
+                  {% if feature_count > 0 %}
+                 <a class="nav-link" href={% url 'view_cart' %}><img src="https://img.icons8.com/windows/32/000000/shopping-cart.png">Cart <label class="badge badge-warning"> {{ feature_count }}</label></a>
+                  {% endif %}
                </li>
                <li class="nav-item">
                  <a class="nav-link" href={% url 'user_profile' %}><img src="https://img.icons8.com/windows/32/000000/gender-neutral-user.png">Profile</a>
@@ -97,10 +99,12 @@
    <!-- Footer -->
     <footer class="footer">
       <div class="container">
-        <p class="text-muted"><img src="https://img.icons8.com/metro/50/000000/unicorn.png"></p>
+        <p class="text-muted"></p>
       </div>
       <div class="footer-copyright text-center py-3">© 2018 Copyright:
          <a href="https://jack-bransfield-resume.herokuapp.com/"> Jack Bransfield @ JBConsulting </a>
+         <br>
+         <img src="https://img.icons8.com/metro/50/000000/unicorn.png">
        </div>
     </footer>
    <!-- Footer -->
