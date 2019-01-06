@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from .models import Bugs, Features, Comments
 from django.utils import timezone
 from .forms import AddBugsForm, AddFeaturesForm, AddCommentForm
-from checkout.views import cart
+from checkout.views import view_cart
 
 
 def tickets(request):   # Render the ticket main page. 
@@ -87,8 +87,8 @@ def features(request):  # Render the features ticket page.
     features = Features.objects.all()
     likes = Features.objects.all()
     user = request.user
-        
-    return render(request, 'features.html', {'features': features, 'likes': likes, 'user': user})
+    cart = request.session.get('cart', {})    
+    return render(request, 'features.html', {'features': features, 'likes': likes, 'user': user, 'cart': cart})
     
     
 def add_feature(request):

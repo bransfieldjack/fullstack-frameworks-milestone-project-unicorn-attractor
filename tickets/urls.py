@@ -1,6 +1,6 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from .views import tickets, edit_bug, edit_feature, add_feature, add_bug, bug_detail, features_detail, bug_upvote, bug_downvote, feature_upvote, feature_downvote
-from checkout.views import cart
+from checkout import urls as urls_checkout
 
 
 urlpatterns = [
@@ -15,7 +15,7 @@ urlpatterns = [
     url(r'(?P<pk>\d+)/bug_downvote/$', bug_downvote, name='bug_downvote'),
     url(r'(?P<pk>\d+)/feature_upvote/$', feature_upvote, name='feature_upvote'),
     url(r'(?P<pk>\d+)/feature_downvote/$', feature_downvote, name='feature_downvote'),
-    url(r'^cart/$', cart, name='cart'),
+    url(r'^cart/', include(urls_checkout)),
     ]
     
     

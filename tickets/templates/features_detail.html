@@ -11,9 +11,17 @@
     </div>
     
     <div class="col-9">
-      
-        <a href={% url 'cart' %}><button type="button" class="btn btn-success">Vote Yes </button></a>
-        <button type="button" class="btn btn-danger">Vote No </button>
+  
+        <form method="post" action="{% url 'add_to_cart' feature.id %}">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input name='quantity' type="number" min="1" max="999" value="1" class="form-control" placeholder="Quantity">
+                    <span class="input-group-btn">
+                            <button class="btn btn-success" type="submit">Add</button>
+                          </span>
+                </div>
+                <!-- /input-group -->
+        
       
         <h2>Feature: <a class="nav-link" href={% url 'edit_feature' feature.id %}>{{ feature.title }}</a></h2>
         {% if user.is_authenticated %}
