@@ -4,12 +4,18 @@
 {% block content %}
 
 <div class="container">
-    
-    <div class="row">
-        <a class="nav-link" href={% url 'add_bug' %}><button type="button" class="btn btn-primary btn-lg">+ Report a Bug</button></a>
-        <a class="nav-link" href={% url 'add_feature' %}><button type="button" class="btn btn-secondary btn-lg">+ Log Feature Request</button></a>
+  <div class="row">
+    <div class="col-sm">
     </div>
-
+    <div class="col-sm">
+      <a class="nav-link" href={% url 'add_bug' %}><button type="button" class="btn btn-primary btn-lg">+ Report a Bug</button></a>
+    </div>
+    <div class="col-sm">
+      <a class="nav-link" href={% url 'add_feature' %}><button type="button" class="btn btn-secondary btn-lg">+ Log Feature Request</button></a>
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
 </div>
 
 {% endblock %}

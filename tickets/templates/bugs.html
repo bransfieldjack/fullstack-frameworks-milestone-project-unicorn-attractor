@@ -4,40 +4,33 @@
 
 {% block content %}
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-     
-    </div>
-    
-    
-    <div class="col-sm">
-      <h1>Bugs: </h1>
-    
-      {%for bug in bugs %}
-        <div class="col-sm-10">
-          <div class="card" style="width: 70rem;">
-            <a href={% url 'bug_detail' bug.id %}>
-              <div class="card-body">
-                <img src="https://img.icons8.com/windows/32/000000/bug.png">
-                <h2 class="card-title">{{ bug.title }}</h2>
-                <p>Views: {{ bug.views }}</p>
-                <p>Created by: {{ bug.reported_by }}</p>
-                <p>Creation date: {{ bug.created_date }}</p>
-                <p>Likes: {{ bug.likes }}</p>
-                </a>
-                <a href={% url 'bug_upvote' bug.id %}><img src="https://img.icons8.com/ios-glyphs/30/000000/thumb-up.png"></a>
-              </div>
+{% for bug in bugs %}
+<section>
+  <div class="container py-3">
+    <div class="card">
+      <div class="row ">
+        <div class="col-md-4">
+            <img src="https://placeholdit.imgix.net/~text?txtsize=38&txt=400%C3%97400&w=400&h=400" class="w-100">
           </div>
+          <div class="col-md-8 px-3">
+            <div class="card-block px-3">
+              <br>
+              <h4 class="card-title"><a href={% url 'bug_detail' bug.id %} class="btn btn-primary">{{ bug.title }}</a></h4>
+              <p class="card-text">Views: {{ bug.views }}</p>
+              <p class="card-text">Created by: {{ bug.reported_by }}</p>
+              <p class="card-text">Creation date: {{ bug.created_date }}</p>
+              <p class="card-text"><a href={% url 'bug_upvote' bug.id %}><img src="https://img.icons8.com/ios-glyphs/30/000000/thumb-up.png"> Likes: {{ bug.likes }}</p></a>
+              <br>
+            </div>
+              
+            
+          </div>
+
         </div>
-      {% endfor %}
-    </div>
-    
-    
-    <div class="col-sm">
-      
+      </div>
     </div>
   </div>
-</div>
+</section>
+{% endfor %}
 
 {% endblock %}

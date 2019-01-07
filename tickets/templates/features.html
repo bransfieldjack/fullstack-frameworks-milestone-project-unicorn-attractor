@@ -4,33 +4,30 @@
 
 {% block content %}
 
-<div class="container">
-    
-    <h1>Features: </h1>
-
-    <div class="row">
-      {% for feature in features %}
-        <div class="col-sm-10">
-          <div class="card" style="width: 70rem;">
-            <a href={% url 'features_detail' feature.id %}>
-              <div class="card-body">
-                <img src="https://img.icons8.com/windows/32/000000/support.png">
-                <h2 class="card-title">{{ feature.title }}</h2>
-                <p>Views: {{ feature.views }}</p>
-                <p>Creation date: {{ feature.created_date }}</p>
-                <p>Likes: {{ feature.likes }}</p>
-                <p>Cart Items: {{ cart }}</p>
-                </a>
-                <a href={% url 'feature_upvote' feature.id %}><button type="button" class="btn"><img src="https://img.icons8.com/ios/50/000000/checkmark.png"></button></a>
-                <a href={% url 'feature_downvote' feature.id %}><button type="button" class="btn"><img src="https://img.icons8.com/ios/50/000000/delete-sign.png"></button></a>  
-
-              </div>
+{% for feature in features %}
+<section>
+  <div class="container py-3">
+    <div class="card">
+      <div class="row ">
+        <div class="col-md-4">
+            <img src="https://placeholdit.imgix.net/~text?txtsize=38&txt=400%C3%97400&w=400&h=400" class="w-100">
+          </div>
+          <div class="col-md-8 px-3">
+            <div class="card-block px-3">
+              <br>
+              <h4 class="card-title"><a href={% url 'features_detail' feature.id %} class="btn btn-primary">{{ feature.title }}</a></h4>
+              <p class="card-text">Views: {{ feature.views }}</p>
+              <p class="card-text">Created by: {{ feature.reported_by }}</p>
+              <p class="card-text">Creation date: {{ feature.created_date }}</p>
+              <p class="card-text"><a href={% url 'bug_upvote' feature.id %}><img src="https://img.icons8.com/ios-glyphs/30/000000/thumb-up.png"> Likes: {{ feature.likes }}</p></a>
+              <br>
+            </div>
           </div>
         </div>
-      {% endfor %}
+      </div>
     </div>
-    
-</div>
-
+  </div>
+</section>
+{% endfor %}
 
 {% endblock %}
