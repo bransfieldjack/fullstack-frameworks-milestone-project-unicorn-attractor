@@ -6,6 +6,7 @@ from checkout.views import view_cart
 
 
 def tickets(request):   # Render the ticket main page. 
+    
     return render(request, 'tickets.html')
     
     

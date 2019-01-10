@@ -75,5 +75,3 @@ def user_profile(request):
         profile = Profile.objects.get()
         
     return render(request, 'user_profile.html', {'form': form, 'profile': profile})
-    
-    
