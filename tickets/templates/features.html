@@ -10,17 +10,19 @@
     <div class="card">
       <div class="row ">
         <div class="col-md-4">
-            <img src="https://placeholdit.imgix.net/~text?txtsize=38&txt=400%C3%97400&w=400&h=400" class="w-100">
+            <img src="https://img.icons8.com/color/480/000000/administrative-tools.png" class="w-100">
           </div>
           <div class="col-md-8 px-3">
             <div class="card-block px-3">
               <br>
-              <h4 class="card-title"><a href={% url 'features_detail' feature.id %} class="btn btn-primary">{{ feature.title }}</a></h4>
+              <a href={% url 'features_detail' feature.id %}><button type="button" class="btn btn-outline-warning">{{ feature.title }}</button></a>
+              <br>
+              <br>
               <p class="card-text">Status: {{ feature.status }}</p>
               <p class="card-text">Views: {{ feature.views }}</p>
               <p class="card-text">Created by: {{ feature.reported_by }}</p>
               <p class="card-text">Creation date: {{ feature.created_date }}</p>
-              <p class="card-text"><a href={% url 'bug_upvote' feature.id %}><img src="https://img.icons8.com/ios-glyphs/30/000000/thumb-up.png"> Likes: {{ feature.likes }}</p></a>
+              <a href={% url 'feature_upvote' feature.id %}><button type="button" class="btn btn-outline-success">Likes: {{ feature.likes }}</button></a>
               <br>
             </div>
           </div>

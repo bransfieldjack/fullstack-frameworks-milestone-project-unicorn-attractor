@@ -7,31 +7,25 @@
 <div class ="container">
 
       <div class="jumbotron">
-        <h1 class="display-4">Login</h1>
-      </div>
-
-      <div class="row">
-
-          <div class="col-sm">
-          </div>
-
-          <div class="col-sm">
-            
-            <form method="POST">
-              <div class="form-group">
-                {% csrf_token %}
-                {{ login_form | as_bootstrap }}
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form> 
-            
-            <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
-            
-          </div>
         
-          <div class="col-sm">
-          </div>
-
+        <div class="col-md">
+   
+            <img src="https://img.icons8.com/color/96/000000/enter-key.png">
+            <h1 class="display-4">Login</h1>
+ 
+            <br>
+            
+              <form method="POST">
+                  <div class="form-group">
+                    {% csrf_token %}
+                    {{ login_form | as_bootstrap }}
+                  </div>
+                  <button type="submit" class="btn btn-success">Submit</button>
+                  <a href="{% url 'password_reset' %}"><button type="button" class="btn btn-secondary">Reset Password</button></a>
+              </form> 
+       
+        </div>
+        
       </div>
 
 </div>

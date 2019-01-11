@@ -4,15 +4,13 @@
     
 {% block content %}
 <div class="container">
-    
-    <div class="row">
-    </div>
-    
+
     <div class="row">
       <div class="col-md-6">
          <div class="card flex-md-row mb-4 shadow-sm h-md-250">
             <div class="card-body d-flex flex-column align-items-start">
-               <strong class="d-inline-block mb-2 text-primary"><a class="nav-link" href={% url 'edit_feature' feature.id %}>{{ feature.title }}</a></strong>
+                
+               <a href={% url 'edit_feature' feature.id %}><button type="button" class="btn btn-secondary"><img src="https://img.icons8.com/color/48/000000/plugin.png">  {{ feature.title }}</button></a>
                <div class="mb-1 text-muted small">{{ feature.created_date }}</div>
                {% if user.is_authenticated %}
                <p class="card-text mb-auto">{{ feature.description }}</p>
@@ -31,11 +29,7 @@
          </div>
       </div>
     </div>
-    
-    <div class="row">
-    </div>
-
-    
+  
 <br>
   
     <div class="row">
@@ -58,23 +52,23 @@
         </div>
     </div>
                 
-                <br>
-                <hr>
+<br>
+<hr>
             
-            <div class="row">
-              <div class="col-md-6">
+    <div class="row">
+        <div class="col-md-6">
                   
-              <h3>Leave A Comment: </h3>
-              <br>
-              <form method="POST", action={% url 'features_detail' feature.id %}>
-                {% csrf_token %}
-                {{ form | as_bootstrap }}
-                <input id="feature_id" name="feature_id" type="hidden" value="{{ feature.id }}">
-                <button type="submit" class="btn btn-primary">POST</button>
-              </form>
+            <h3>Leave A Comment: </h3>
+                <br>
+                <form method="POST", action={% url 'features_detail' feature.id %}>
+                    {% csrf_token %}
+                    {{ form | as_bootstrap }}
+                    <input id="feature_id" name="feature_id" type="hidden" value="{{ feature.id }}">
+                    <button type="submit" class="btn btn-success">POST</button>
+                </form>
               
-              </div>
-            </div>
+        </div>
+    </div>
             
 
 </div>
