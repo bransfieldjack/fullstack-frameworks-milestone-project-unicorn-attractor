@@ -19,15 +19,7 @@
                {% if user.is_authenticated %}
                <p class="card-text mb-auto">{{ bug.description }}</p>
                {% endif %}
-                <form method="post" action="{% url 'add_to_cart' bug.id %}">
-                    {% csrf_token %}
-                        <div class="input-group">
-                            <input name='quantity' type="hidden" value={{ bug.id }}>
-                                <span class="input-group-btn">
-                                    <button class="btn btn-success" type="submit">Upvote ($5.00)</button>
-                                </span>
-                        </div>
-                </form>
+                
             </div>
             <img class="card-img-right flex-auto d-none d-lg-block" alt="" src="" style="width: 200px; height: 250px;">
          </div>
