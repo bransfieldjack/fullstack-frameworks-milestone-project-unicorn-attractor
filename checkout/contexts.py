@@ -13,6 +13,6 @@ def cart_contents(request): #  Allows the contents of the cart to be displayed o
         feature = get_object_or_404(Features, pk=id)
         total += quantity * 5.00
         feature_count += quantity
-        cart_items.append({'id': id, 'quantity': quantity, 'feature': feature})
+        cart_items.append({'id': feature.title, 'quantity': quantity, 'feature': feature})
         
     return { 'cart_items': cart_items, 'total': total, 'feature_count': feature_count }
