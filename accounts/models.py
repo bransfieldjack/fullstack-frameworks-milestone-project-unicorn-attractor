@@ -8,6 +8,7 @@ class Item(models.Model):
     
     
 class Profile(models.Model):
+    upload = models.FileField()
     username = models.OneToOneField(User, on_delete=models.CASCADE)
     email = models.CharField(max_length=50)
     bio = models.TextField(max_length=500, blank=True)

@@ -1,5 +1,12 @@
 from django.db import models
 
+
+STATUS_CHOICES = (
+    ('assigned','ASSIGNED'),
+    ('in progess','IN PROGRESS'),
+    ('completed', 'COMPLETED'),
+)
+
     
 class Bugs(models.Model):
     title = models.CharField(max_length=50, default='')
@@ -7,6 +14,7 @@ class Bugs(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     views = models.IntegerField(default=0)
     likes= models.IntegerField(default=0)
+    status = models.CharField(max_length=10, choices = STATUS_CHOICES, default='assigned')
     
     
     def __str__(self):
@@ -19,6 +27,7 @@ class Features(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     views = models.IntegerField(default=0)
     likes= models.IntegerField(default=0)
+    status = models.CharField(max_length=10, choices = STATUS_CHOICES, default='assigned')
     
     
     def __str__(self):

@@ -3,6 +3,9 @@ from .models import Bugs, Features, Comments
 from django.utils import timezone
 from .forms import AddBugsForm, AddFeaturesForm, AddCommentForm
 from checkout.views import view_cart
+import boto3
+from boto.s3.connection import S3Connection
+import boto3
 
 
 def tickets(request):   # Render the ticket main page. 
@@ -16,6 +19,7 @@ def bugs(request):  # Render the bugs ticket page.
     
     
 def add_bug(request):
+    
     if request.method=="POST":
         form = AddBugsForm(request.POST)  # If POST request received from form, and form is valid, save the form data and redirect back to the detail page with the id of the object. 
         if form.is_valid():
@@ -96,7 +100,7 @@ def add_feature(request):
     if request.method=="POST":
         form = AddFeaturesForm(request.POST)  # If POST request received from form, and form is valid, save the form data and redirect back to the detail page with the id of the object. 
         if form.is_valid():
-            feature = form.save()
+            form.save()
             return redirect(features)
     else:
         form = AddFeaturesForm

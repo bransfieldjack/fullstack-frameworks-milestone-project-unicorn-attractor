@@ -16,6 +16,7 @@
             <div class="card-block px-3">
               <br>
               <h4 class="card-title"><a href={% url 'features_detail' feature.id %} class="btn btn-primary">{{ feature.title }}</a></h4>
+              <p class="card-text">Status: {{ feature.status }}</p>
               <p class="card-text">Views: {{ feature.views }}</p>
               <p class="card-text">Created by: {{ feature.reported_by }}</p>
               <p class="card-text">Creation date: {{ feature.created_date }}</p>

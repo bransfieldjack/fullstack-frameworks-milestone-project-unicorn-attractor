@@ -16,6 +16,7 @@
             <div class="card-block px-3">
               <br>
               <h4 class="card-title"><a href={% url 'bug_detail' bug.id %} class="btn btn-primary">{{ bug.title }}</a></h4>
+              <p class="card-text">Status: {{ bug.status }}</p>
               <p class="card-text">Views: {{ bug.views }}</p>
               <p class="card-text">Created by: {{ bug.reported_by }}</p>
               <p class="card-text">Creation date: {{ bug.created_date }}</p>
