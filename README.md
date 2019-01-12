@@ -20,12 +20,12 @@ In return, the site administrator will pledge to spend a minimum amount of time 
 ## UX
  
 This app is targeted towards the open source developer community. It is meant as a means for people to come together in an online community to discuss and share their ideas. As a start-up company project, the intention is to allow the user to have an input into the design of the web app, by allowing the facility for features requests to be voted upon/developed. 
--	User Stories:
-o	As an open source developer, I am looking for a place to collaborate and share my ideas in relation to software development. 
-o	My aim is to be able to learn from others and develop my skills to become a better developer. 
-o	I need to be able to login to an app where I can use a commenting system to discuss features and bugs with other developers. 
+###	User Stories:
+-	As an open source developer, I am looking for a place to collaborate and share my ideas in relation to software development. 
+-	My aim is to be able to learn from others and develop my skills to become a better developer. 
+-	I need to be able to login to an app where I can use a commenting system to discuss features and bugs with other developers. 
 
-- Wireframes: 
+### Wireframes: 
 
 Landing Page:
 ![Landing Page](https://s3-ap-southeast-2.amazonaws.com/full-stack-frameworks/unicorn-attractor/github/ua_landing_page.PNG)
