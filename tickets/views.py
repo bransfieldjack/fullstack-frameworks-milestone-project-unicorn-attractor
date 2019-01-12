@@ -3,9 +3,7 @@ from .models import Bugs, Features, Comments
 from django.utils import timezone
 from .forms import AddBugsForm, AddFeaturesForm, AddCommentForm
 from checkout.views import view_cart
-import boto3
-from boto.s3.connection import S3Connection
-import boto3
+
 
 
 def tickets(request):   # Render the ticket main page. 
