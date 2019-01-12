@@ -23,7 +23,7 @@ def add_bug(request):
     if request.method=="POST":
         form = AddBugsForm(request.POST)  # If POST request received from form, and form is valid, save the form data and redirect back to the detail page with the id of the object. 
         if form.is_valid():
-            bug = form.save()
+            form.save()
             return redirect(bugs)
     else:
         form = AddBugsForm
@@ -99,6 +99,10 @@ def features(request):  # Render the features ticket page.
 def add_feature(request):
     if request.method=="POST":
         form = AddFeaturesForm(request.POST)  # If POST request received from form, and form is valid, save the form data and redirect back to the detail page with the id of the object. 
+        user = user = request.user
+        feature = Features.objects.all(pk=pk)
+        feature.created_by = user
+        feature.save()
         if form.is_valid():
             form.save()
             return redirect(features)
@@ -123,8 +127,8 @@ def features_detail(request, pk):
         feature_id = request.POST['feature_id']
 
         if form.is_valid:
-            save = Comments(feature_id = feature_id, message = form.save(), user = user) # Save the feature ID from the front end and the contents of the form to the message field & feature field in the database. 
-            save.save()
+            feature_to_save = Comments(feature_id = feature_id, message = form.save(), user = user) # Save the feature ID from the front end and the contents of the form to the message field & feature field in the database. 
+            feature_to_save.save()
             return redirect(features_detail, feature.pk)
     else:
         form = AddCommentForm()   

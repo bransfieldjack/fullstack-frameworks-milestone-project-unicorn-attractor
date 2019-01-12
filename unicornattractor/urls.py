@@ -5,6 +5,7 @@ from accounts.views import index, login, register, logout, user_profile
 from tickets.views import tickets, bugs, features, edit_bug, edit_feature, add_feature, add_bug, bug_detail, features_detail, bug_upvote, bug_downvote, feature_upvote, feature_downvote
 from accounts import urls as accounts_urls
 from checkout.views import view_cart, add_to_cart, checkout
+from charts.views import get_data, stats, ChartData
 
 
 urlpatterns = [
@@ -31,4 +32,8 @@ urlpatterns = [
     url(r'^view_cart/$', view_cart, name='view_cart'),
     url(r'(?P<pk>\d+)/add_to_cart/$', add_to_cart, name='add_to_cart'),
     url(r'^checkout/$', checkout, name='checkout'),
+    url(r'^get_data/$', get_data, name='get_data'),
+    url(r'^stats/$', stats, name='stats'),
+    url(r'^ChartData/$', ChartData.as_view(), name='ChartData'),
+    url(r'^api-auth/', include('rest_framework.urls'))
 ]

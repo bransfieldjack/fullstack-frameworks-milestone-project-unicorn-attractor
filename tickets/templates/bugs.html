@@ -20,7 +20,6 @@
               <br>
               <p class="card-text">Status: {{ bug.status }}</p>
               <p class="card-text">Views: {{ bug.views }}</p>
-              <p class="card-text">Created by: {{ bug.reported_by }}</p>
               <p class="card-text">Creation date: {{ bug.created_date }}</p>
               <a href={% url 'bug_upvote' bug.id %}><button type="button" class="btn btn-outline-success">Likes: {{ bug.likes }}</button></a>
               <br>

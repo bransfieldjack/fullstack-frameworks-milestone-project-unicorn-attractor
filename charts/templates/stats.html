@@ -31,6 +31,9 @@
     
     <!-- JQuery -->
     <link rel="stylesheet" href="{% static 'js/jquery.min.js' %}">
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
  
     <!-- Unicorn Icon --> 
     <a href="https://icons8.com/icon/15785/unicorn">Unicorn icon by Icons8</a>
@@ -114,10 +117,12 @@
    <br>
    <br>
 
-   {% block content %} 
-   
-   {% endblock %}
-   
+    <div class="container">
+        <div class="jumbotron" style="background-color:#ccd3e0;">
+            <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+    </div>
+
    <br>
    <br>
    <br>
@@ -140,6 +145,58 @@
    <!-- Bootstrap core JavaScript -->
     <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/bootstrap.bundle.min.js"></script>
+    
+    
+      <script>
+      
+              var endpoint = '/ChartData/'
+              var defaultData = []
+              var labels = [];
+              
+              $.ajax({
+                  method:"GET",
+                  url: endpoint,
+                  success: function(data){
+                      labels = data.labels
+                      defaultData = data.default_items
+                      var ctx = document.getElementById("myChart").getContext('2d');
+                      var myChart = new Chart(ctx, {
+                          type: 'bar',
+                          data: {
+                              labels: labels,
+                              datasets: [{
+                                  label: 'Usage Data',
+                                  data: defaultData,
+                                  backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255,99,132,1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                              }]
+                          }
+                      })
+                   
+                  },
+                  error: function(error_data){
+                      console.log("error")
+                      console.log(error_data)
+                  }
+              })
+
+      </script>
+
 
   </body>
 
