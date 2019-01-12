@@ -125,3 +125,4 @@ In addition, if it is not obvious, you should also describe how to run your code
 - I received inspiration for this project from X
 - Django REST framework tutorial: ![Pretty Printed] https://www.youtube.com/watch?v=263xt_4mBNc
 - Django REST framework with Chart.js tutorial: ![CodingEntrepreneurs] https://www.youtube.com/watch?v=B4Vmm3yZPgc
+- Chart.js: https://www.chartjs.org/
