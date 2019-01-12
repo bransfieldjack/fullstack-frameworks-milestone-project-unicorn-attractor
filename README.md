@@ -13,10 +13,6 @@ The application facilitates the prioritisation of different tasks for the admini
 Upvoting bug fixes does not cost any money, but the addition of a new feature to the site, which requires a certain number of upvotes to be implemented, requires a small fee to cover labour costs. 
 In return, the site administrator will pledge to spend a minimum amount of time working on the most popular voted highest-paid feature addition request. 
 
- 
-[![Build Status](https://travis-ci.org/bransfieldjack/fullstack-frameworks-milestone-project-unicorn-attractor.svg?branch=master)](https://travis-ci.org/bransfieldjack/fullstack-frameworks-milestone-project-unicorn-attractor)
-
- 
 ## UX
  
 This app is targeted towards the open source developer community. It is meant as a means for people to come together in an online community to discuss and share their ideas. As a start-up company project, the intention is to allow the user to have an input into the design of the web app, by allowing the facility for features requests to be voted upon/developed. 
@@ -92,8 +88,59 @@ New users are provided with a means to register on the site. Access to any of th
 - [Gunicorn 19.9.0 ](http://docs.gunicorn.org/en/stable/news.html) Gunicorn is a python WSGI used for deployment of the application on Heroku. 
 - [Psycopg2==2.7.6.1 ](https://pypi.org/project/psycopg2/) Psycopg2 is a Postgresql adaptor/driver used for deployment of the sites database on Heroku.
 - [Heroku](https://www.heroku.com/products) Heroku is a managed, container-based cloud (PaaS) platform as a service. Heroku was a clear choice in terms of deployment platform given its integration with modern technologies. 
+- [Balsamiq](https://balsamiq.com/) Wirefaming was completed using Balsamiq. This was helpful during the UX design process. 
+
+* All of the code written in this project is my own, with the exception of the stripe.js file for interacting with the stripe API and the Chart.js code in the Django-Charts app for interacting with the Django REST framework end points.
 
 ## Testing
+
+This project was created using a TDD approach where possible. Unit testing was conducted as much and as frequently as possible. For test cases where the unit test framework could not be applied to the work, a separate test_app.py file was used to test standalone python functions. The purpose of unit testing with python is to recognise bugs/issues with the code early in the development process.
+
+![Accounts User Login Form](https://s3-ap-southeast-2.amazonaws.com/fullstack-frameworks-milestone-project-unicorn-attractor/screenshots/accounts_test_user_login_form.PNG)
+
+![Accounts test_views.py](https://s3-ap-southeast-2.amazonaws.com/fullstack-frameworks-milestone-project-unicorn-attractor/screenshots/accounts_tests_views.PNG)
+
+![Tickets models_test.py](https://s3-ap-southeast-2.amazonaws.com/fullstack-frameworks-milestone-project-unicorn-attractor/screenshots/model_tests.PNG)
+
+## Manual Testing
+
+### Linking/pages:
+
+Checked all outgoing (page to page) and internal links.
+Confirmed that no orphan pages exist as part of this project. (Un-used pages left over from the development process)
+
+### Form Testing:
+
+Tested form submission links and form validation for image upload - no issues.
+
+### Cookies Testing:
+
+Disabled cookies and confirmed that the site behaves as per normal.
+No observable effect on application security after disabling cookies during or outside of a session.
+
+### HTML Validation:
+
+Validated all HTML code using: https://validator.w3.org/ (Fixed minor errors/warnings)
+
+### Database Testing:
+
+Verified that test data was writing to the mongoDB database. 
+Verified the ability to retrieve data from the same database.
+
+### Ease of Learning:
+
+Everything the user needs in terms of information is clearly displayed. Clickable links are made obvious when appropriate, and large icons are used for clarity.
+
+### Navigation:
+
+The site is relatively easy to navigate. 
+The user cannot progress throughout the site without entering a username. 
+
+### Compatibility:
+
+Cross browser compatibility testing has been conducted using Chrome, Firefox, Edge and Opera.
+Mobile compatibility testing has been undertaken to ensure that the site works well on mobile devices. 
+
 
 In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
 
