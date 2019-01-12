@@ -56,8 +56,23 @@ Features Page:
 
 ## Features
 
-In this section, you should go over the different parts of your project, and describe each in a sentence or so.
- 
+### Registration: 
+
+New users are provided with a means to register on the site. Access to any of the sites functionality requires that the user be registered. Registration is handled by the accounts app, it uses the Django auth model. Django forms handle the user input and form. 
+
+- Login: Login functionality is handled by the accounts app. This allows a user who has already registered on the site to login and access the sites functionality. A user can login using a combination of either their username and password or email address and password.  
+- Index: Once the user has logged in they will be redirected to the index.html page. Here the user will be greeted with a jumbotron containing their own login username and a welcome message. This page contains information about the sites goals and usage, as well as displaying the navbar functionality for the first time. The navbar functionality is available on all pages if the user has successfully logged in. 
+- Tickets Functionality: To add a feature request or register a bug on the site, the user can navigate to the user profile page using three different methods; the About icon contained in the navbar, the unicorn icon also contained in the navbar, or by following the instructions contained on the index page. Once the user has successfully navigated to the /tickets/ page, they can select from “Report a Bug” or “Log Feature Request” options. 
+
+### Navbar:
+
+- Bugs: When the user selects the Bugs option on the navbar, they are redirected to the /bugs/ url. Here they will see a list of bugs retrieved from the database that have already been added in the database by any other user. The bug ticket will show its ticket status, number of views, creation date and number of likes or “up-votes”. The user can click on the title of the bug to be transferred to the /bug_detail/ url. Here the user will be free to comment on the issue, and edit the bug specific information: description, title and status. 
+- Features: When the user selects the Features option on the navbar, they are redirected to the /features/ url. Here they will see a list of features retrieved from the database that have already been added in the database by any other user. The feature ticket will show its ticket status, number of views, creation date and number of likes or “up-votes”. The user can click on the title of the feature to be transferred to the /feature_detail/ url. Here the user will be free to comment on the issue, and edit the bug specific information: description, title and status. The user will also have the option to “Upvote” the feature request, to signify their interest in having the feature implemented in the web app. Upon clicking the upvote button, the user will be redirected to the /view_cart/ url, where they will be presented with the number of items added to the users cart, and the total cost of all items. The user will have the option to “Go To Checkout”. The user can access the /view_cart/ url from the navbar, so long as their cart contains at least one item. 
+- Checkout: The /checkout/ url displays a Django payment form allowing the user to pay for items in their cart. The form is implemented using the stripe API integration. On this page, the user will be presented with the number of items being purchased and the total cost. Once payment has been successfully completed, the user will observe a Django messages success message, notifying them that the payment has completed with success. 
+- Profile: Users can access a rudimentary profile page from the navbar. Here they will be presented with a means of logging a ticket via the /tickets/ url, as well as confirmation of their user login ID. 
+- Stats: Users can access the sites usage data graph using the /stats/ url. Here they will see content pertaining to the number of bugs, features, users and comments contained within the database. This was implemented using Django REST framework and Chart.js. 
+
+
 ### Existing Features
 - Feature 1 - allows users X to achieve Y, by having them fill out Z
 - ...
