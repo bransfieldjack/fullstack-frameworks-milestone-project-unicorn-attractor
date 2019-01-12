@@ -9,7 +9,7 @@ The applications primary means of collecting user information is in the form of 
 Each ticket displays one of three different status'; assigned, in progress or completed. 
 Issues or tickets are logged to two different categories; bugs/defects in the application which will be fixed for free, and feature additions which will only be implemented for a chargeable fee. 
 
-The application facilitates the prioritisation of different tasks for the administrator, by implementing a mechanism for the user to 'up/down-vote' both bug fixes and feature additions. 
+The application facilitates the prioritisation of different tasks for the administrator, by implementing a mechanism for the user to 'up-vote' both bug fixes and feature additions. 
 Upvoting bug fixes does not cost any money, but the addition of a new feature to the site, which requires a certain number of upvotes to be implemented, requires a small fee to cover labour costs. 
 In return, the site administrator will pledge to spend a minimum amount of time working on the most popular voted highest-paid feature addition request. 
 
@@ -19,12 +19,11 @@ In return, the site administrator will pledge to spend a minimum amount of time 
  
 ## UX
  
-Use this section to provide insight into your UX process, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
-
-In particular, as part of this section we recommend that you provide a list of User Stories, with the following general structure:
-- As a user type, I want to perform an action, so that I can achieve a goal.
-
-This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
+This app is targeted towards the open source developer community. It is meant as a means for people to come together in an online community to discuss and share their ideas. As a start-up company project, the intention is to allow the user to have an input into the design of the web app, by allowing the facility for features requests to be voted upon/developed. 
+-	User Stories:
+o	As an open source developer, I am looking for a place to collaborate and share my ideas in relation to software development. 
+o	My aim is to be able to learn from others and develop my skills to become a better developer. 
+o	I need to be able to login to an app where I can use a commenting system to discuss features and bugs with other developers. 
 
 - Wireframes: 
 
