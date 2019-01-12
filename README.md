@@ -56,6 +56,8 @@ Features Page:
 
 ## Features
 
+## Existing Features
+
 ### Registration: 
 
 New users are provided with a means to register on the site. Access to any of the sites functionality requires that the user be registered. Registration is handled by the accounts app, it uses the Django auth model. Django forms handle the user input and form. 
@@ -72,27 +74,24 @@ New users are provided with a means to register on the site. Access to any of th
 - Profile: Users can access a rudimentary profile page from the navbar. Here they will be presented with a means of logging a ticket via the /tickets/ url, as well as confirmation of their user login ID. 
 - Stats: Users can access the sites usage data graph using the /stats/ url. Here they will see content pertaining to the number of bugs, features, users and comments contained within the database. This was implemented using Django REST framework and Chart.js. 
 
-
-### Existing Features
-- Feature 1 - allows users X to achieve Y, by having them fill out Z
-- ...
-
-For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
-
-In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
-
 ### Features Left to Implement
-- Another feature idea
+
+- User Profile: Additionally, I would like to extend the default Django auth model to allow users to input extra information upon registration, Bio, Location, Occupation etc. I would also like to include functionality to upload a user profile picture in the same update. 
 
 ## Technologies Used
 
-Installed django-bootstrap3.
-
-In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
-
-- [JQuery](https://jquery.com)
-    - The project uses **JQuery** to simplify DOM manipulation.
-
+- Git [Git](https://git-scm.com/) Version control for this app was managed using Git, with a remote public repository hosted on Github: [github](https://github.com/bransfieldjack/fullstack-frameworks-milestone-project-unicorn-attractor/tree/master)
+- Python 3 [Python](https://www.python.org/download/releases/3.0/) Python was chosen as it is delivered on the course content. It is easy to use, modern and versatile. 
+- Django==1.11 (LTS) [Django](https://www.djangoproject.com/download/) Django 1.11 long term support was used for the sites framework. This is the version used throughout the tutorials during the course and support for this iteration extends beyond 2018.
+- Django REST framework [Django REST](https://www.django-rest-framework.org/) Django REST framework was used to construct the web API for use with the sites stats page. The endpoints can be accessed via JQuery and provide data input for the Chart.js plugin. The browseable API can be accessed via the following link once logged into the site: https://unicorn-attractor-jackalack117.c9users.io/ChartData/.
+- JQuery 3.3.1 [JQuery](https://blog.jquery.com/2018/01/20/jquery-3-3-1-fixed-dependencies-in-release-tag/) JQuery 3.3.1 was used for both the styling and to assist with the AJAX calls used on this site. 3.3.1was used as it resolved an issue discovered in the previous release. 
+- Bootstrap 4.1.3 [Bootstrap](https://getbootstrap.com/docs/4.1/getting-started/download/) Bootstrap 4 was used for this sites style templating. Bootstrap 4 is the newest and fastest version of bootstrap. 
+- AWS SDK for Python (Boto) [Boto](https://aws.amazon.com/sdk-for-python/) Boto is a library used to access AWS S3, EC2, and DynamoDB services. I used it in conjunction with an S3 bucket to host the static files required for this site. 
+- AWS S3 [S3](https://aws.amazon.com/s3/) AWS S3 Bucket storage was used to host static files. This can be accessed programmatically from our app using boto and secretkey environment variables. 
+- Stripe [Stripe](https://stripe.com/au) The sites online payment functionality has been implemente using Stripe. The stripe API allows us to process payments on the site which are dealt with by 3rd party banks/financial companies. 
+- Gunicorn 19.9.0 [Gunicorn](http://docs.gunicorn.org/en/stable/news.html) Gunicorn is a python WSGI used for deployment of the application on Heroku. 
+- Psycopg2==2.7.6.1 [psycopg2](https://pypi.org/project/psycopg2/) Psycopg2 is a Postgresql adaptor/driver used for deployment of the sites database on Heroku.
+- Heroku [Heroku](https://www.heroku.com/products) Heroku is a managed, container-based cloud (PaaS) platform as a service. Heroku was a clear choice in terms of deployment platform given its integration with modern technologies. 
 
 ## Testing
 
