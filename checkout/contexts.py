@@ -14,5 +14,5 @@ def cart_contents(request): #  Allows the contents of the cart to be displayed o
         total += quantity * 5.00
         feature_count += quantity
         cart_items.append({'id': id, 'quantity': quantity, 'feature': feature})
-        
-    return { 'cart_items': cart_items, 'total': total, 'feature_count': feature_count, 'feature':feature }
+  
+    return { 'cart_items': cart_items, 'total': total, 'feature_count': feature_count}
