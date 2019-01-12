@@ -7,9 +7,13 @@
     <div class="jumbotron">
     
         <div class="row">
-            <h1>Features you wish to pay to upvote: {{ cart }}</h1>
-            <a class="nav-link" href={% url 'checkout' %}><button class="btn btn-success" type="submit">Go To Checkout</button></a>
+            {% for item in cart_items %}
+            <h1>Features you wish to pay to upvote: {{ feature }}</h1>
+            <h1>Total Cost: ${{ total }}</h1>
+            {% endfor %}
+            
         </div>
+        <a class="nav-link" href={% url 'checkout' %}><button class="btn btn-success" type="submit">Go To Checkout</button></a>
     
     </div>
 </div>
