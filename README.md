@@ -284,7 +284,7 @@ Mobile compatibility testing has been undertaken to ensure that the site works w
 * Create an 'IP' config var, with a corresponding value of: 0.0.0.0.
 * Create a 'PORT' config var, with a corresponding value of: 5000.
 * Create a config var for storage of the S3 secret access key credentials. 
-* Create a config var containing your mongDB username and password credentials. 
+* Create a config var containing your DATABASE_URL credentials for use with Postgresql.
 * Make sure all other relevant environment variables (see env.py) are configured, as required. 
 * To access the application, click open on the heroku console (top right) and record the apps URL. 
 
