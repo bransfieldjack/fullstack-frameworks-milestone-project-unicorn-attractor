@@ -89,18 +89,86 @@ New users are provided with a means to register on the site. Access to any of th
 - [Psycopg2==2.7.6.1 ](https://pypi.org/project/psycopg2/) Psycopg2 is a Postgresql adaptor/driver used for deployment of the sites database on Heroku.
 - [Heroku](https://www.heroku.com/products) Heroku is a managed, container-based cloud (PaaS) platform as a service. Heroku was a clear choice in terms of deployment platform given its integration with modern technologies. 
 - [Balsamiq](https://balsamiq.com/) Wirefaming was completed using Balsamiq. This was helpful during the UX design process. 
+- [icons8](https://icons8.com/) Iconography for this site was obtained from icons8. 
 
 * All of the code written in this project is my own, with the exception of the stripe.js file for interacting with the stripe API and the Chart.js code in the Django-Charts app for interacting with the Django REST framework end points.
 
 ## Testing
 
-This project was created using a TDD approach where possible. Unit testing was conducted as much and as frequently as possible. For test cases where the unit test framework could not be applied to the work, a separate test_app.py file was used to test standalone python functions. The purpose of unit testing with python is to recognise bugs/issues with the code early in the development process.
+This project was created using a TDD approach where possible. This site is built with the understanding that it will accomodate a large online community of users, who wish to interact and collaborate on issues and feature requests. 
+As such, integral to the TDD process for this app was to ensure that both form submission and validation were working without issue. Additionally, testing for model functionality was also a requirement.
+Automate testing was carried out using Travis CI, and unit testing was carried out on "target areas" such as form validation, model tests and form submission. Undocumented in this manual are trivial tests, such as checking to see that a function is "on" etc. 
+Travis integration has since been removed from the repository. The production environment is using a POSTGRESQL database, all CI testing was running on the local SQLITE database. As such, Travis CI was failing. I have not yet discovered a fix, env variables have been configured on Travis but it is still failing on database testing. 
 
 ![Accounts User Login Form](https://s3-ap-southeast-2.amazonaws.com/fullstack-frameworks-milestone-project-unicorn-attractor/screenshots/accounts_test_user_login_form.PNG)
 
+```
+from django.test import TestCase
+from .forms import UserLoginForm, UserProfileForm
+
+
+class TestUserLoginForm(TestCase):
+    
+    def test_UserLoginForm(self):
+        form = UserLoginForm({'username': ''})
+        self.assertFalse(form.is_valid())
+        
+    def test_UserLoginForm_validation(self):
+        form = UserLoginForm({'username': ''})
+        self.assertFalse(form.is_valid())
+        self.assertEqual(form.errors['username'], [u'This field is required.'])
+```
+
 ![Accounts test_views.py](https://s3-ap-southeast-2.amazonaws.com/fullstack-frameworks-milestone-project-unicorn-attractor/screenshots/accounts_tests_views.PNG)
 
+```
+from django.test import TestCase
+
+
+class TestViews(TestCase):
+    
+    def test_get_home_page(self):
+        page = self.client.get("/")
+        self.assertEqual(page.status_code, 200)
+        self.assertTemplateUsed(page, "index.html")
+        
+    def test_get_login_page(self):
+        page = self.client.get("/accounts/login/")
+        self.assertEqual(page.status_code, 200)
+        self.assertTemplateUsed(page, "login.html")
+        
+    def test_get_registration_page(self):
+        page = self.client.get("/accounts/register/")
+        self.assertEqual(page.status_code, 200)
+        self.assertTemplateUsed(page, "register.html")
+        
+    def test_get_user_profile_page(self):
+        page = self.client.get("/tickets/")
+        self.assertEqual(page.status_code, 200)
+        self.assertTemplateUsed(page, "tickets.html")
+```
+
 ![Tickets models_test.py](https://s3-ap-southeast-2.amazonaws.com/fullstack-frameworks-milestone-project-unicorn-attractor/screenshots/model_tests.PNG)
+
+```
+from django.test import TestCase    
+from .models import Features, Comments
+
+
+class TestFeatureModel(TestCase):
+    
+    def test_status_default_assigned(self):
+        feature = Features(title="Test Feature 1")
+        feature.save()
+        self.assertEqual(feature.title, "Test Feature 1")
+        self.assertEqual(feature.status, "assigned")
+        
+    def test_can_create_a_feature(self):
+        feature = Features(name="Create a test", done=True)
+        feature.save()
+        self.assertEqual(feature.name, "Create a test")
+        self.assertTrue(feature.done)
+```
 
 ## Manual Testing
 
@@ -111,7 +179,7 @@ Confirmed that no orphan pages exist as part of this project. (Un-used pages lef
 
 ### Form Testing:
 
-Tested form submission links and form validation for image upload - no issues.
+Tested form submission links and form validation - no issues.
 
 ### Cookies Testing:
 
@@ -124,7 +192,7 @@ Validated all HTML code using: https://validator.w3.org/ (Fixed minor errors/war
 
 ### Database Testing:
 
-Verified that test data was writing to the mongoDB database. 
+Verified that test data was writing to the database. 
 Verified the ability to retrieve data from the same database.
 
 ### Ease of Learning:
@@ -141,48 +209,53 @@ The user cannot progress throughout the site without entering a username.
 Cross browser compatibility testing has been conducted using Chrome, Firefox, Edge and Opera.
 Mobile compatibility testing has been undertaken to ensure that the site works well on mobile devices. 
 
-
-In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
-
-Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
-
-For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
-
-1. Contact form:
-    1. Go to the "Contact Us" page
-    2. Try to submit the empty form and verify that an error message about the required fields appears
-    3. Try to submit the form with an invalid email address and verify that a relevant error message appears
-    4. Try to submit the form with all inputs valid and verify that a success message appears.
-
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
-
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
-
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
-
 ## Deployment
 
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
+- This site was developed with Cloud 9 IDE primarliy, and VS Code for editing when required (offline). 
+- A delivery and CI pipeline was implemented using the remote Gihub repository, Travis CI, Heroku staging and Heroku prduction.
+- Automated testing and release to staging has been setup, and the staging environment has been configured using the same environment variables as production (heroku config vars). 
+- The development environment contains environment variables which are not shared on the publicly accessible repository, for obvious security reasons. 
 
-In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
-- Different values for environment variables (Heroku Config Vars)?
-- Different configuration files?
-- Separate git branch?
+### From the Heroku Dashboard:
 
-In addition, if it is not obvious, you should also describe how to run your code locally.
+* Login to your heroku account.
+* From the dashboard, select: New > Create New App.
+* Select an appropriate App Name as per the on-screen instructions, and the most relevant hosting region. 
+* Select Create App.
 
+### From the bash command line/local repo:
+
+* Logon to your heroku account using the 'heroku login' command. 
+* Initialise your repo, if you havent already done so.
+* Connect the Heroku App repo using the 'heroku git:remote -a (app name)' command.
+* In order for Heroku to build your app, you will need to specify the requirements using the following command: 'sudo pip3 freeze --local > requirements.txt'.
+* As per the development process, remove all packages/dependencies installed as a result of experimentation which may prohibit successful build on the heroku container. 
+* You will also need to generate a "Procfile" before pushing your code. This acts as the entry point for your application. To generate this file, use the 'echo web: python app.py > Procfile' command from bash.
+* Use git add . to save your work.
+* Add your first commit (git commit -m "Initial Commit. "), then use 'git push heroku master' to push your code to Heroku. 
+* To complete the process and ensure that your app will run, set the appropriate config variables from the heroku settings tab. 
+* Create Heroku add-ons (PostgreSQL).
+* Run heroku config:set DEBUG_COLLECTSTATIC=1, this allows for integration of our static files being hosted on S3 with boto. 
+* Create an 'IP' config var, with a corresponding value of: 0.0.0.0.
+* Create a 'PORT' config var, with a corresponding value of: 5000.
+* Create a config var for storage of the S3 secret access key credentials. 
+* Create a config var containing your mongDB username and password credentials. 
+* Make sure all other relevant environment variables (see env.py) are configured, as required. 
+* To access the application, click open on the heroku console (top right) and record the apps URL. 
 
 ## Credits
 
+- ![Pretty Printed, Django REST](https://www.youtube.com/watch?v=263xt_4mBNc)
+- ![Coding Entrepeneurs, Django and Chart.js](https://www.youtube.com/watch?v=B4Vmm3yZPgc)
+
 ### Content
-- The text for section Y was copied from the [Wikipedia article Z](https://en.wikipedia.org/wiki/Z)
+- All text content on the site is my own.
 
 ### Media
-- The photos used in this site were obtained from ...
+- The icons used in this site were obtained from ![icons8](https://icons8.com/)
 
 ### Acknowledgements
 
-- I received inspiration for this project from X
 - Django REST framework tutorial: ![Pretty Printed] https://www.youtube.com/watch?v=263xt_4mBNc
 - Django REST framework with Chart.js tutorial: ![CodingEntrepreneurs] https://www.youtube.com/watch?v=B4Vmm3yZPgc
 - Chart.js: https://www.chartjs.org/
