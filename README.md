@@ -2,8 +2,8 @@
 
 ![UA](https://s3-ap-southeast-2.amazonaws.com/full-stack-frameworks/ua.PNG)
 
-The unicorn attractor is a modern startup venture.
-The business model for this app centers loosely around the idea of an online, open source community contributing capital and ideas to its development. 
+The unicorn attractor is a modern start-up venture.
+The business model for this app centres around the idea of an online, open source community contributing capital and ideas to its development. 
 The unicorn attractor offers software development services and bug fixes for free, but a small fee from any user requesting an additional feature on the site. 
 The applications primary means of collecting user information is in the form of issue/work tickets, not too dissimilar to what you might find in a modern CRM. 
 Each ticket displays one of three different status'; assigned, in progress or completed. 
@@ -56,7 +56,7 @@ Features Page:
 
 ### Registration: 
 
-New users are provided with a means to register on the site. Access to any of the sites functionality requires that the user be registered. Registration is handled by the accounts app, it uses the Django auth model. Django forms handle the user input and form. 
+New users are provided with a means to register on the site. Access to any of the sites functionality requires that the user be registered. Registration is handled by the accounts app, it uses the Django AUTH model. Django forms handle the user input and form. 
 
 - Login: Login functionality is handled by the accounts app. This allows a user who has already registered on the site to login and access the sites functionality. A user can login using a combination of either their username and password or email address and password.  
 - Index: Once the user has logged in they will be redirected to the index.html page. Here the user will be greeted with a jumbotron containing their own login username and a welcome message. This page contains information about the sites goals and usage, as well as displaying the navbar functionality for the first time. The navbar functionality is available on all pages if the user has successfully logged in. 
@@ -65,39 +65,39 @@ New users are provided with a means to register on the site. Access to any of th
 ### Navbar:
 
 - Bugs: When the user selects the Bugs option on the navbar, they are redirected to the /bugs/ url. Here they will see a list of bugs retrieved from the database that have already been added in the database by any other user. The bug ticket will show its ticket status, number of views, creation date and number of likes or “up-votes”. The user can click on the title of the bug to be transferred to the /bug_detail/ url. Here the user will be free to comment on the issue, and edit the bug specific information: description, title and status. 
-- Features: When the user selects the Features option on the navbar, they are redirected to the /features/ url. Here they will see a list of features retrieved from the database that have already been added in the database by any other user. The feature ticket will show its ticket status, number of views, creation date and number of likes or “up-votes”. The user can click on the title of the feature to be transferred to the /feature_detail/ url. Here the user will be free to comment on the issue, and edit the bug specific information: description, title and status. The user will also have the option to “Upvote” the feature request, to signify their interest in having the feature implemented in the web app. Upon clicking the upvote button, the user will be redirected to the /view_cart/ url, where they will be presented with the number of items added to the users cart, and the total cost of all items. The user will have the option to “Go To Checkout”. The user can access the /view_cart/ url from the navbar, so long as their cart contains at least one item. 
+- Features: When the user selects the Features option on the navbar, they are redirected to the /features/ url. Here they will see a list of features retrieved from the database that have already been added in the database by any other user. The feature ticket will show its ticket status, number of views, creation date and number of likes or “up-votes”. The user can click on the title of the feature to be transferred to the /feature_detail/ url. Here the user will be free to comment on the issue, and edit the bug specific information: description, title and status. The user will also have the option to “Upvote” the feature request, to signify their interest in having the feature implemented in the web app. Upon clicking the upvote button, the user will be redirected to the /view_cart/ url, where they will be presented with the number of items added to the user’s cart, and the total cost of all items. The user will have the option to “Go To Checkout”. The user can access the /view_cart/ url from the navbar, so long as their cart contains at least one item. 
 - Checkout: The /checkout/ url displays a Django payment form allowing the user to pay for items in their cart. The form is implemented using the stripe API integration. On this page, the user will be presented with the number of items being purchased and the total cost. Once payment has been successfully completed, the user will observe a Django messages success message, notifying them that the payment has completed with success. 
 - Profile: Users can access a rudimentary profile page from the navbar. Here they will be presented with a means of logging a ticket via the /tickets/ url, as well as confirmation of their user login ID. 
 - Stats: Users can access the sites usage data graph using the /stats/ url. Here they will see content pertaining to the number of bugs, features, users and comments contained within the database. This was implemented using Django REST framework and Chart.js. 
 
 ### Features Left to Implement
 
-- User Profile: Additionally, I would like to extend the default Django auth model to allow users to input extra information upon registration, Bio, Location, Occupation etc. I would also like to include functionality to upload a user profile picture in the same update. 
+- User Profile: Additionally, I would like to extend the default Django AUTH model to allow users to input extra information upon registration, Bio, Location, Occupation etc. I would also like to include functionality to upload a user profile picture in the same update. 
 
 ## Technologies Used
 
 - [Git](https://git-scm.com/) Version control for this app was managed using Git, with a remote public repository hosted on Github: [github](https://github.com/bransfieldjack/fullstack-frameworks-milestone-project-unicorn-attractor/tree/master)
 - [Python 3 ](https://www.python.org/download/releases/3.0/) Python was chosen as it is delivered on the course content. It is easy to use, modern and versatile. 
 - [Django==1.11 (LTS) ](https://www.djangoproject.com/download/) Django 1.11 long term support was used for the sites framework. This is the version used throughout the tutorials during the course and support for this iteration extends beyond 2018.
-- [Django REST framework ](https://www.django-rest-framework.org/) Django REST framework was used to construct the web API for use with the sites stats page. The endpoints can be accessed via JQuery and provide data input for the Chart.js plugin. The browseable API can be accessed via the following link once logged into the site: https://unicorn-attractor-jackalack117.c9users.io/ChartData/.
+- [Django REST framework ](https://www.django-rest-framework.org/) Django REST framework was used to construct the web API for use with the sites stats page. The endpoints can be accessed via JQuery and provide data input for the Chart.js plugin. The browsable API can be accessed via the following link once logged into the site: https://unicorn-attractor-jackalack117.c9users.io/ChartData/.
 - [JQuery 3.3.1 ](https://blog.jquery.com/2018/01/20/jquery-3-3-1-fixed-dependencies-in-release-tag/) JQuery 3.3.1 was used for both the styling and to assist with the AJAX calls used on this site. 3.3.1was used as it resolved an issue discovered in the previous release. 
 - [Bootstrap 4.1.3 ](https://getbootstrap.com/docs/4.1/getting-started/download/) Bootstrap 4 was used for this sites style templating. Bootstrap 4 is the newest and fastest version of bootstrap. 
 - [AWS SDK for Python (Boto) ](https://aws.amazon.com/sdk-for-python/) Boto is a library used to access AWS S3, EC2, and DynamoDB services. I used it in conjunction with an S3 bucket to host the static files required for this site. 
 - [AWS S3 ](https://aws.amazon.com/s3/) AWS S3 Bucket storage was used to host static files. This can be accessed programmatically from our app using boto and secretkey environment variables. 
-- [Stripe ](https://stripe.com/au) The sites online payment functionality has been implemente using Stripe. The stripe API allows us to process payments on the site which are dealt with by 3rd party banks/financial companies. 
+- [Stripe ](https://stripe.com/au) The sites online payment functionality has been implemented using Stripe. The stripe API allows us to process payments on the site which are dealt with by 3rd party banks/financial companies. 
 - [Gunicorn 19.9.0 ](http://docs.gunicorn.org/en/stable/news.html) Gunicorn is a python WSGI used for deployment of the application on Heroku. 
 - [Psycopg2==2.7.6.1 ](https://pypi.org/project/psycopg2/) Psycopg2 is a Postgresql adaptor/driver used for deployment of the sites database on Heroku.
 - [Heroku](https://www.heroku.com/products) Heroku is a managed, container-based cloud (PaaS) platform as a service. Heroku was a clear choice in terms of deployment platform given its integration with modern technologies. 
-- [Balsamiq](https://balsamiq.com/) Wirefaming was completed using Balsamiq. This was helpful during the UX design process. 
+- [Balsamiq](https://balsamiq.com/) Wireframing was completed using Balsamiq. This was helpful during the UX design process. 
 - [icons8](https://icons8.com/) Iconography for this site was obtained from icons8. 
 
 * All of the code written in this project is my own, with the exception of the stripe.js file for interacting with the stripe API and the Chart.js code in the Django-Charts app for interacting with the Django REST framework end points.
 
 ## Testing
 
-This project was created using a TDD approach where possible. This site is built with the understanding that it will accomodate a large online community of users, who wish to interact and collaborate on issues and feature requests. 
+This project was created using a TDD approach where possible. This site is built with the understanding that it will accommodate a large online community of users, who wish to interact and collaborate on issues and feature requests. 
 As such, integral to the TDD process for this app was to ensure that both form submission and validation were working without issue. Additionally, testing for model functionality was also a requirement.
-Automate testing was carried out using Travis CI, and unit testing was carried out on "target areas" such as form validation, model tests and form submission. Undocumented in this manual are trivial tests, such as checking to see that a function is "on" etc. 
+Automated testing was carried out using Travis CI, and unit testing was carried out on "target areas" such as form validation, model tests and form submission. Undocumented in this manual are trivial tests, such as checking to see that a function is "on" etc. 
 Travis integration has since been removed from the repository. The production environment is using a POSTGRESQL database, all CI testing was running on the local SQLITE database. As such, Travis CI was failing. I have not yet discovered a fix, env variables have been configured on Travis but it is still failing on database testing. 
 
 ![Accounts User Login Form](https://s3-ap-southeast-2.amazonaws.com/fullstack-frameworks-milestone-project-unicorn-attractor/screenshots/accounts_test_user_login_form.PNG)
@@ -211,8 +211,8 @@ Mobile compatibility testing has been undertaken to ensure that the site works w
 
 ## Deployment
 
-- This site was developed with Cloud 9 IDE primarliy, and VS Code for editing when required (offline). 
-- A delivery and CI pipeline was implemented using the remote Gihub repository, Travis CI, Heroku staging and Heroku prduction.
+- This site was developed with Cloud 9 IDE primarily, and VS Code for editing when required (offline). 
+- A delivery and CI pipeline was implemented using the remote Github repository, Travis CI, Heroku staging and Heroku production.
 - Automated testing and release to staging has been setup, and the staging environment has been configured using the same environment variables as production (heroku config vars). 
 - The development environment contains environment variables which are not shared on the publicly accessible repository, for obvious security reasons. 
 
@@ -245,8 +245,8 @@ Mobile compatibility testing has been undertaken to ensure that the site works w
 
 ## Credits
 
-- ![Pretty Printed, Django REST](https://www.youtube.com/watch?v=263xt_4mBNc)
-- ![Coding Entrepeneurs, Django and Chart.js](https://www.youtube.com/watch?v=B4Vmm3yZPgc)
+- [Pretty Printed, Django REST](https://www.youtube.com/watch?v=263xt_4mBNc)
+- [Coding Entrepreneurs, Django and Chart.js](https://www.youtube.com/watch?v=B4Vmm3yZPgc)
 
 ### Content
 - All text content on the site is my own.
@@ -257,5 +257,5 @@ Mobile compatibility testing has been undertaken to ensure that the site works w
 ### Acknowledgements
 
 - Django REST framework tutorial: ![Pretty Printed] https://www.youtube.com/watch?v=263xt_4mBNc
-- Django REST framework with Chart.js tutorial: ![CodingEntrepreneurs] https://www.youtube.com/watch?v=B4Vmm3yZPgc
+- Django REST framework with Chart.js tutorial: ![Coding Entrepreneurs] https://www.youtube.com/watch?v=B4Vmm3yZPgc
 - Chart.js: https://www.chartjs.org/
