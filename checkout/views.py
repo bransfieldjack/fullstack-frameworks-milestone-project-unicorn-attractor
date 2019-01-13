@@ -9,7 +9,7 @@ from .models import OrderLineItem
 import stripe
 
 
-stripe.api_key = settings.STRIPE_SECRET
+stripe.api_key = settings.STRIPE_SECRET # For use with the stripe API. Stored in an environmen variable. env.py
 
 
 def view_cart(request): # Renders the cart page.
@@ -19,6 +19,11 @@ def view_cart(request): # Renders the cart page.
     
 @login_required()
 def checkout(request):
+    
+    """
+    Handles checkout, retrieves cart contents from contexts file. Calculates price based on quantity and cost. Handles stripe payment and returns messages via django messages. 
+    """
+    
     if request.method=='POST':
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
@@ -58,6 +63,11 @@ def checkout(request):
     
     
 def add_to_cart(request, pk):
+    
+    """
+    Add item to the cart. 
+    """
+    
     quantity=int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
     if pk in cart:
@@ -69,7 +79,12 @@ def add_to_cart(request, pk):
     return redirect(reverse('view_cart'))
     
     
-def adjust_cart(request, id):   # Adjust the quantitiy of whats in the cart. 
+def adjust_cart(request, id): 
+    
+    """
+    Adjust the quantitiy of whats in the cart.
+    """
+    
     quantity=int(request.POST.get('quantity'))
     cart=request.session.get('cart', {})
     

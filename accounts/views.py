@@ -7,10 +7,19 @@ from accounts.models import Profile
 
 
 def index(request):
+    
+    """
+    User index function, returning the index page. 
+    """
     return render(request, 'index.html')
 
 
-def login(request):
+def login(request): 
+    
+    """
+    This function handles user login, returning the login page and form. 
+    If the users login is successful they are redirected to the above index function, if not they are presented with an error message.
+    """
     
     if request.user.is_authenticated:
         return redirect(reverse('index'))
@@ -34,12 +43,23 @@ def login(request):
     
 @login_required
 def logout(request):
+    
+    """
+    Handles the request for a user to login. Only accessible if the user has logged in to begin with.
+    Uses the built in django auth functionality and django messages. 
+    """
+    
     auth.logout(request)
     messages.success(request, 'You have been logged out. ')
     return render(request, 'logout.html')
     
     
 def register(request):
+    
+    """
+    Handles user registration. Checks if a user is authenticated, then redirects. If not, displayed django messages error. 
+    """
+    
     if request.user.is_authenticated:
         return redirect(reverse('index'))
 
@@ -64,6 +84,10 @@ def register(request):
     
 def user_profile(request):
     
+    """
+    Handles creation of user profile page/form. The model for this function will extend django auth. 
+    """
+
     if request.method=="POST":
         form = UserProfileForm(request.POST)
         if form.is_valid():

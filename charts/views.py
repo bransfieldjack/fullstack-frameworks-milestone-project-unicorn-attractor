@@ -7,15 +7,23 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 
-Users = get_user_model()
+Users = get_user_model() # Retrieves the users form the Users model, to be used in the graph. 
 
 
 def stats(request):
+    
+    """
+    Renders the stats page. The data will be retrieved from the page using AJAX, no python logic required in this function.
+    """
     
     return render(request, 'stats.html')
 
 
 def get_data(request, *args, **kwargs):
+    
+    """
+    A test function to research returning API data from REST using python logic instead of AJAX. 
+    """
     
     data = {
         "sales": 100,
@@ -25,6 +33,10 @@ def get_data(request, *args, **kwargs):
     
     
 class ChartData(APIView):
+    
+    """
+    Returns data from the API endpoint. Passes values into variables to be used in template via AJAX. 
+    """
     
     authentication_classes = []
     permission_classes = []

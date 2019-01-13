@@ -2,7 +2,7 @@ from django import forms
 from .models import Order
 
 
-class MakePaymentForm(forms.Form):
+class MakePaymentForm(forms.Form):  # A payment form, with CC specific fields. 
     
     MONTH_CHOICES = [(i, i) for i in range(1, 12)]
     YEAR_CHOICES = [(i, i) for i in range(2017, 2036)]
@@ -14,7 +14,7 @@ class MakePaymentForm(forms.Form):
     stripe_id = forms.CharField(widget=forms.HiddenInput)
     
     
-class OrderForm(forms.ModelForm):
+class OrderForm(forms.ModelForm):   # An order form. 
     class Meta:
         model = Order
         fields = ('full_name', 'phone_number', 'country', 'postcode', 'town_or_city', 'street_address1', 'street_address2', 'county')

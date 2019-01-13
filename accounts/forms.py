@@ -5,13 +5,13 @@ from django.core.exceptions import ValidationError
 from accounts.models import Profile
 
 
-class UserLoginForm(forms.Form):    # User login form.
+class UserLoginForm(forms.Form):    # User login form, taking tw fields - username, password. 
     
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
     
     
-class UserRegistrationForm(UserCreationForm):   # User registration form. 
+class UserRegistrationForm(UserCreationForm):   # User registration form, allowing for users to register.
     
     password1 = forms.CharField(label="Password", widget=forms.PasswordInput)
     password2 = forms.CharField(label="Password Confirmation", widget=forms.PasswordInput)
@@ -28,7 +28,7 @@ class UserRegistrationForm(UserCreationForm):   # User registration form.
             raise forms.ValidationError('Email address already exists. ')
         return email
         
-    def clean_password2(self):
+    def clean_password2(self):  # Clean prevents dirty/used data in the DB. 
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
     
@@ -41,7 +41,7 @@ class UserRegistrationForm(UserCreationForm):   # User registration form.
         return password2
         
         
-class UserProfileForm(forms.ModelForm):
+class UserProfileForm(forms.ModelForm): # User profile input form, to be implemented in a future iteration. 
     
     class Meta:
         model = Profile

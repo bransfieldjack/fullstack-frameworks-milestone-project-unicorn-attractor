@@ -3,11 +3,11 @@ from django.contrib.auth.models import User
 
 
 class Item(models.Model):
-    name = models.CharField(max_length=30, blank=False)
+    name = models.CharField(max_length=30, blank=False) # Model used during development for testing purposes. 
     done = models.BooleanField(blank=False, default=False)
     
     
-class Profile(models.Model):
+class Profile(models.Model):    # Model under development for release in a future iteration. Possibly used with/extending the User auth model. 
     upload = models.FileField()
     username = models.OneToOneField(User, on_delete=models.CASCADE)
     email = models.CharField(max_length=50)

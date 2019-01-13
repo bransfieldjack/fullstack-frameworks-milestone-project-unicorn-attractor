@@ -170,6 +170,51 @@ class TestFeatureModel(TestCase):
         self.assertTrue(feature.done)
 ```
 
+![Charts Test](https://s3-ap-southeast-2.amazonaws.com/fullstack-frameworks-milestone-project-unicorn-attractor/screenshots/charts_test.PNG)
+
+```
+def get_data(request, *args, **kwargs):
+    
+    """
+    A test function to research returning API data from REST using python logic instead of AJAX. 
+    """
+    
+    data = {
+        "sales": 100,
+        "customers": 10,
+    }
+    return JsonResponse(data) # http response
+```
+
+![Charts API Test](https://s3-ap-southeast-2.amazonaws.com/fullstack-frameworks-milestone-project-unicorn-attractor/screenshots/chart_api_test.PNG)
+
+```
+class ChartData(APIView):
+    
+    """
+    Returns data from the API endpoint. Passes values into variables to be used in template via AJAX. 
+    """
+    
+    authentication_classes = []
+    permission_classes = []
+    
+    def get(self, request, format=None):
+        
+        users = Users.objects.all().count()
+        comments = Comments.objects.all().count()
+        features = Features.objects.all().count()
+        bugs = Bugs.objects.all().count()
+        
+        labels = ["Users", "Comments", "Features", "Bugs"]
+        default_items = [users, comments, features, bugs]
+        
+        data = {
+                "labels": labels,
+                "default_items": default_items,
+            }
+        return Response(data)
+```
+
 ## Manual Testing
 
 ### Linking/pages:

@@ -8,7 +8,7 @@ STATUS_CHOICES = (
 )
 
     
-class Bugs(models.Model):
+class Bugs(models.Model):    # Bugs Model, used to register a new bug. 
     title = models.CharField(max_length=50, default='')
     description = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
@@ -21,7 +21,7 @@ class Bugs(models.Model):
         return self.title
         
     
-class Features(models.Model):
+class Features(models.Model):   # Features Model, used to request new feature additions. 
     title = models.CharField(max_length=50, default='')
     description = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
@@ -34,7 +34,7 @@ class Features(models.Model):
         return self.title
         
         
-class Comments(models.Model):
+class Comments(models.Model):   # Comments Model, used to store comments for either a bug or feature using a foreign key
     feature = models.ForeignKey(Features, null=True)
     bug = models.ForeignKey(Bugs, null=True)
     message = models.TextField()

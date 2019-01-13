@@ -10,4 +10,4 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = (OrderLineAdminInLine, )
     
     
-admin.site.register(Order, OrderAdmin)
+admin.site.register(Order, OrderAdmin)  # Registering with the django admin console. 
