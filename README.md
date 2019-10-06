@@ -1,6 +1,6 @@
 # Full Stack Frameworks Milestone Project - Unicorn Attractor App
 
-### This app can bee access from the following link: [Unicorn Attractor](https://unicorn-attractor-ci.herokuapp.com/)
+### This app can bee accessed from the following link: [Unicorn Attractor](https://unicorn-attractor-ci.herokuapp.com/)
 
 ![UA](https://s3-ap-southeast-2.amazonaws.com/full-stack-frameworks/ua.PNG)
 
